@@ -6,6 +6,7 @@ EditorUserSettings:
   serializedVersion: 4
   m_ConfigSettings:
     RecentlyUsedSceneGuid-0:
+<<<<<<< Updated upstream
       value: 560103020402085e0b0f0e7716260c444f164e78282c73677a701e67b3b1663d
       flags: 0
     RecentlyUsedSceneGuid-1:
@@ -30,9 +31,33 @@ EditorUserSettings:
 <<<<<<< Updated upstream
       value: 0504500755025a58595f5e7b487206444615402c282c72367d7c4c63b0b7323b
 =======
+=======
+      value: 00520c0554540a035c5d597149770e4142161a2c7d7025357d7b4b66e0e3666c
+      flags: 0
+    RecentlyUsedSceneGuid-1:
+      value: 5357045253005b0a0e58087149775b45424f4c78742e7469292a4d61e0b2323d
+      flags: 0
+    RecentlyUsedSceneGuid-2:
+      value: 5b03005254530d08550f592141775e13454e4d7c7b2c75672c281e63e4b8666f
+      flags: 0
+    RecentlyUsedSceneGuid-3:
+      value: 5505550003515b0d0e595f7a43775b484f4e1d2f2e2b7f677b7a4966e6b43739
+      flags: 0
+    RecentlyUsedSceneGuid-4:
+>>>>>>> Stashed changes
       value: 055557045454580d5e0c097a46770c454e4e4b7e7c2b76627a284c30bae2373a
       flags: 0
+    RecentlyUsedSceneGuid-5:
+      value: 020455565356080859575d7149760c44104f1b297d787f64297b1b30b5b7606f
+      flags: 0
+    RecentlyUsedSceneGuid-6:
+      value: 5a5757560101590a5d0c0e24427b5d44434e4c7a7b7a23677f2b4565b7b5353a
+      flags: 0
+    RecentlyUsedSceneGuid-7:
+      value: 560103020402085e0b0f0e7716260c444f164e78282c73677a701e67b3b1663d
+      flags: 0
     RecentlyUsedSceneGuid-8:
+<<<<<<< Updated upstream
       value: 020455565356080859575d7149760c44104f1b297d787f64297b1b30b5b7606f
 >>>>>>> Stashed changes
       flags: 0
@@ -43,6 +68,12 @@ EditorUserSettings:
 <<<<<<< Updated upstream
       value: 5505550003515b0d0e595f7a43775b484f4e1d2f2e2b7f677b7a4966e6b43739
 =======
+      value: 0504500755025a58595f5e7b487206444615402c282c72367d7c4c63b0b7323b
+>>>>>>> Stashed changes
+=======
+      value: 560704555353515d0f5d0f7a41770c4417151d2c742b24357f7f4d63e0b46739
+      flags: 0
+    RecentlyUsedSceneGuid-9:
       value: 0504500755025a58595f5e7b487206444615402c282c72367d7c4c63b0b7323b
 >>>>>>> Stashed changes
       flags: 0
