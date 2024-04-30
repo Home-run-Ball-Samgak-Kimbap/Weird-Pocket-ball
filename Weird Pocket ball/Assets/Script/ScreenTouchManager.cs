@@ -38,12 +38,13 @@ public class ScreenTouchManager : MonoBehaviour
             //cueController.DrowLineRenderer(mousePos);
         Vector3 mousePos = new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10); // 마우스 위치
         Vector2 direction = (prevPos - mousePos).normalized;
+        Vector3 rayPos = new Vector3(direction.x, 0, direction.y);
         Vector3 lineRednderPos = new Vector3(direction.x, ball.transform.position.y / 5, direction.y);
 
         RaycastHit hit;
-        Debug.DrawRay(transform.position, transform.forward * 10, Color.red);
-        Physics.Raycast(transform.position, transform.forward, out hit);
-
+        Debug.DrawRay(ball.transform.position, rayPos * 15, Color.red);
+        Physics.Raycast(ball.transform.position, rayPos, out hit);
+        Debug.Log(hit.distance);
         cueLineRenderer.SetPosition(0, ball.transform.position);
         cueLineRenderer.SetPosition(1, lineRednderPos * hit.distance);
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90; // -90도 조정
