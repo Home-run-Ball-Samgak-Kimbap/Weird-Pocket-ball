@@ -12,24 +12,7 @@ public class GameManager : MonoBehaviour
     private bool player2 = false;
     private bool isMove = false;
     // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-    public void GameStart()
-    {
-
-    }
-    void PlayGame()
-    {
-
-    }
+    
     public void ShootBall()
     {
         StartCoroutine(BallMovementStatus());

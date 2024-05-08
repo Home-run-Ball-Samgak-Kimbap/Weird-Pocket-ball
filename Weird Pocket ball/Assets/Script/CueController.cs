@@ -4,38 +4,20 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class CueController : MonoBehaviour, IEndDragHandler
+public class CueController : MonoBehaviour
 {
-
     public Slider forceSlider;
+    public ScreenTouchManager touchManager;
     public GameObject ball;
-    public GameObject cue;
-    Rigidbody cueRb;
-    private void Start()
-    {
-        cueRb = cue.GetComponent<Rigidbody>();
 
-    }
-    public void OnEndDrag(PointerEventData eventData)
+    private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("Drag ended");
-        float force = forceSlider.value * 50;
-        forceSlider.value = 0;
-
-        ball.GetComponent<Rigidbody>().AddForce(cue.transform.forward * force, ForceMode.Impulse);
-
-        cueRb.AddForce(transform.forward * force, ForceMode.Impulse);
-        StartCoroutine(CheckVelocity());
-    }
-    IEnumerator CheckVelocity()
-    {
-        // 속도가 threshold 이하로 떨어질 때까지 반복 검사
-        while (cueRb.velocity.magnitude > 0.1)
+        if(collision.gameObject.tag == "ball")
         {
-            yield return new WaitForSeconds(0.1f); // 0.1초마다 체크
+            this.gameObject.SetActive(false);
+            ball.GetComponent<Rigidbody>().AddForce(touchManager.rayPos * forceSlider.value * 50, ForceMode.Impulse);
+
         }
 
-        // 조건 만족 후 cue 비활성화
-        cue.SetActive(false);
     }
 }
