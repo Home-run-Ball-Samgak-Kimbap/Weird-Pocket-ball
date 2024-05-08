@@ -1,63 +1,41 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
-public class CueController : MonoBehaviour
+public class CueController : MonoBehaviour, IEndDragHandler
 {
 
-    public LineRenderer cueLineRenderer;
-    private ScreenTouchManager screenTouchManager;
-    private Vector3 forceDirection;
-    private float forceMagnitude;
-    public float length = 5f;
-    public GameObject tip;
+    public Slider forceSlider;
     public GameObject ball;
-
-    public GameObject endObj;
-
+    public GameObject cue;
+    Rigidbody cueRb;
     private void Start()
     {
-        cueLineRenderer.startWidth = 0.05f; // 선의 시작 너비
-        cueLineRenderer.endWidth = 0.05f; // 선의 끝 너비
-    }
-    public void OnLineRenderer()
-    {
-        cueLineRenderer.enabled = true;
-    }
-    public void DrowLineRenderer(Vector3 mousePosition)
-    {
-       // Vector2 direction = (worldPos - cue.transform.position).normalized;
-        //Vector3 endPos = (tip.transform.position - endObj.transform.position).normalized;
-        //mousePosition);
-                                                                  //forceDirection = (ray.GetPoint(5f) - transform.position).normalized;
-                                                                  // forceDirection = (endPos - transform.position).normalized;
-        /// forceMagnitude = (endPos - transform.position).magnitude * 500f;
-        /// 
-        // 레이의 시작 위치와 방향 설정
-        Vector3 rayStart = transform.position; // 현재 GameObject의 위치
-        Vector3 rayDirection = transform.forward; // GameObject의 전방 방향
+        cueRb = cue.GetComponent<Rigidbody>();
 
-        // 레이캐스트 정보를 저장할 RaycastHit 변수
-        RaycastHit hit;
+    }
+    public void OnEndDrag(PointerEventData eventData)
+    {
+        Debug.Log("Drag ended");
+        float force = forceSlider.value * 50;
+        forceSlider.value = 0;
 
-        // 레이캐스트 실행
-        if (Physics.Raycast(rayStart, rayDirection, out hit))
+        ball.GetComponent<Rigidbody>().AddForce(cue.transform.forward * force, ForceMode.Impulse);
+
+        cueRb.AddForce(transform.forward * force, ForceMode.Impulse);
+        StartCoroutine(CheckVelocity());
+    }
+    IEnumerator CheckVelocity()
+    {
+        // 속도가 threshold 이하로 떨어질 때까지 반복 검사
+        while (cueRb.velocity.magnitude > 0.1)
         {
-            // 레이와 충돌한 오브젝트까지의 거리 출력
-            Debug.Log("Hit " + hit.collider.gameObject.name + " at distance: " + hit.distance);
-            cueLineRenderer.SetPosition(0, tip.transform.position);
-            cueLineRenderer.SetPosition(1, hit.transform.position);
+            yield return new WaitForSeconds(0.1f); // 0.1초마다 체크
         }
-        else
-        {
-            cueLineRenderer.SetPosition(0, ball.transform.position);
-            cueLineRenderer.SetPosition(1, endObj.transform.position);
-        }//endObj.transform.position);
-    }
 
-    public void AddForce()
-    {
-        cueLineRenderer.enabled = false;
-        this.GetComponent<Rigidbody>().AddForce(forceDirection * forceMagnitude);
+        // 조건 만족 후 cue 비활성화
+        cue.SetActive(false);
     }
 }
