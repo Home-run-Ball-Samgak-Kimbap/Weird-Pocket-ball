@@ -18,12 +18,12 @@ public class BallForceController : MonoBehaviour, IEndDragHandler
     }
     public void MoveCue()
     {
-        cue.transform.position -= touchManager.rayPos;
+        cue.transform.position -= touchManager.rayPos / 10 ;
     }
     public void OnEndDrag(PointerEventData eventData)
     {
         Debug.Log("Drag ended");
-        float force = forceSlider.value * 100;
+        float force = forceSlider.value * 50;
         forceSlider.value = 0;
 
 
