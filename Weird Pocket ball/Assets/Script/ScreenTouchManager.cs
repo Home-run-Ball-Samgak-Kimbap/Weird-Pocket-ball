@@ -1,14 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
+using UnityEngine.UI;
 
 public class ScreenTouchManager : MonoBehaviour
 {
     public GameObject ball;
     public GameObject cue;
-    public Vector3 prevPos;
+    public Vector3 rayPos;
+
+
     LineRenderer cueLineRenderer;
+    Vector3 prevPos;
     private void Start()
     {
         cueLineRenderer = ball.GetComponent<LineRenderer>();
@@ -26,27 +29,25 @@ public class ScreenTouchManager : MonoBehaviour
     private void OnMouseUp()
     {
         Debug.Log("OnMouseUp");
-        cueLineRenderer.GetComponent<LineRenderer>().enabled = false;
-        cue.SetActive(false);
+              
+        
        
     }
     private void OnMouseDrag()
     {
-        
-
-
             //cueController.DrowLineRenderer(mousePos);
         Vector3 mousePos = new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10); // 마우스 위치
         Vector2 direction = (prevPos - mousePos).normalized;
-        Vector3 rayPos = new Vector3(direction.x, 0, direction.y);
-        Vector3 lineRednderPos = new Vector3(direction.x, ball.transform.position.y / 5, direction.y);
+        rayPos = new Vector3(direction.x, 0, direction.y);
 
         RaycastHit hit;
         Debug.DrawRay(ball.transform.position, rayPos * 15, Color.red);
         Physics.Raycast(ball.transform.position, rayPos, out hit);
         Debug.Log(hit.distance);
+        Vector3 lineRednderPos = new Vector3(direction.x * hit.distance, 0, direction.y * hit.distance);
+
         cueLineRenderer.SetPosition(0, ball.transform.position);
-        cueLineRenderer.SetPosition(1, lineRednderPos * hit.distance);
+        cueLineRenderer.SetPosition(1, ball.transform.position + lineRednderPos);
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90; // -90도 조정
         ball.transform.rotation = Quaternion.Euler(0, -angle, 0); // 회전 적용
     }
