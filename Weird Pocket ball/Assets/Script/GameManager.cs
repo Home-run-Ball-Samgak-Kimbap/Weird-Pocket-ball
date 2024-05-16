@@ -15,6 +15,8 @@ public class GameManager : MonoBehaviour
     public Rigidbody[] player1BallsChildren;
     public GameObject player2Balls;
     public Rigidbody[] player2BallsChildren;
+
+    public int countchecker = 3;
     public void GameStart()
     {
         player1Count = 0;
@@ -52,44 +54,54 @@ public class GameManager : MonoBehaviour
     void CheckTurn(GameObject ball)
     {
         StartCoroutine(BallMovementStatus());
-        if (turn)
-        {//player1의 turn에서 player1공이 아닌 공을 넣으면
-            if (ball.tag != "Player1")
-            {
-                turn = false;
-                player2Count++;
-            }
-            else
-                player1Count++;
-        }
-        else
-        {
-            if (ball.tag != "Player2")
-            {
-                turn = true;
-                player1Count++;
-            }
-            else
-                player2Count++;
-        }
-
-        if(ball.name == "BlackBall")
-        {
-            if (turn)
-                Debug.Log("BlackBall | player2 승리");
-            else
-                Debug.Log("BlackBall | Player1 승리");
-        }
-        else
-        {
-            if (player1Count == 2)
-                Debug.Log("Player1 승리");
-            else if (player2Count == 2)
-                Debug.Log("Player2 승리");
-        }
         
+        if (ball.name == "Ball")
+            turn = !turn;
+        else
+        {
 
+            if (ball.name == "BlackBall")
+            {
+                if (turn) //player1턴
+                {
+                    if (player1Count == countchecker)
+                        Debug.Log("BlackBall | Player1 승리");
+                    else
+                        Debug.Log("BlackBall | player2 승리");
+                }
 
+                else
+                {
+                    if (player2Count == countchecker)
+                        Debug.Log("BlackBall | Player2 승리");
+                    else
+                        Debug.Log("BlackBall | player1 승리");
+                }
+            }
+            else
+            {
+                if (turn)
+                {//player1의 turn에서 player1공이 아닌 공을 넣으면
+                    if (ball.tag != "Player1")
+                    {
+                        turn = false;
+                        player2Count++;
+                    }
+                    else
+                        player1Count++;
+                }
+                else
+                {
+                    if (ball.tag != "Player2")
+                    {
+                        turn = true;
+                        player1Count++;
+                    }
+                    else
+                        player2Count++;
+                }
+            }
+        }
     }
     private void OnCollisionEnter(Collision collision)
     {
