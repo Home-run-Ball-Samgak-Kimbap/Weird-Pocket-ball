@@ -35,15 +35,17 @@ public class ScreenTouchManager : MonoBehaviour
     }
     private void OnMouseDrag()
     {
-            //cueController.DrowLineRenderer(mousePos);
+        ball.GetComponent<LineRenderer>().enabled = true;
+
+        //cueController.DrowLineRenderer(mousePos);
         Vector3 mousePos = new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10); // 마우스 위치
         Vector2 direction = (prevPos - mousePos).normalized;
         rayPos = new Vector3(direction.x, 0, direction.y);
 
         RaycastHit hit;
-        Debug.DrawRay(ball.transform.position, rayPos * 15, Color.red);
+       // Debug.DrawRay(ball.transform.position, rayPos * 15, Color.red);
         Physics.Raycast(ball.transform.position, rayPos, out hit);
-        Debug.Log(hit.distance);
+       // Debug.Log(hit.distance);
         Vector3 lineRednderPos = new Vector3(direction.x * hit.distance, 0, direction.y * hit.distance);
 
         cueLineRenderer.SetPosition(0, ball.transform.position);
