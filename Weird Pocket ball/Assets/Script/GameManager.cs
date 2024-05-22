@@ -7,26 +7,52 @@ public class GameManager : MonoBehaviour
 {
     bool isMove = false;
     [SerializeField] private bool turn;
-
-    int player1Count = 0;
-    int player2Count = 0;
+    [SerializeField] private int player1Count = 0;
+    [SerializeField] private int player2Count = 0;
 
     public GameObject player1Balls;
     public Rigidbody[] player1BallsChildren;
     public GameObject player2Balls;
     public Rigidbody[] player2BallsChildren;
+    public GameObject cue;
+    public GameObject playerBall;
+
+    Vector3 cuePos;
+
+    bool callCheck;
+
 
     public int countchecker = 3;
+    private void Update()
+    {
+        if (CueController.isStart)
+        {
+            CueController.isStart = false;
+            StartCoroutine(CallBallMovementStatus());
+        }
+    }
+    private void Start()
+    {
+        GameStart();
+        cuePos = cue.transform.position;
+        Debug.Log("cue.transform.position : " + cue.transform.localPosition);
+
+    }
     public void GameStart()
     {
         player1Count = 0;
         player2Count = 0;
         turn = true; //player 1 turn
-
         player1BallsChildren = player1Balls.GetComponentsInChildren<Rigidbody>();
         player2BallsChildren = player2Balls.GetComponentsInChildren<Rigidbody>();
     }
+    IEnumerator CallBallMovementStatus()
+    {
+        yield return new WaitForSecondsRealtime(5);
+        Debug.Log("ekdrms? 555");
 
+        StartCoroutine(BallMovementStatus());      
+    }
     IEnumerator BallMovementStatus()
     {
         bool player1Move = false;
@@ -49,14 +75,24 @@ public class GameManager : MonoBehaviour
         if (isMove)
             yield return new WaitForSeconds(0.5f);
         else
+        {
+            if (callCheck)
+            {
+                turn = !true;
+                callCheck = false;
+            }
+            ResetChildPosition();
             yield break;
+        }
     }
-    void CheckTurn(GameObject ball)
+    public void CheckScore(GameObject ball)
     {
-        StartCoroutine(BallMovementStatus());
-        
         if (ball.name == "Ball")
+        {
             turn = !turn;
+            playerBall.transform.position = new Vector3(0, -24, 0);
+            playerBall.transform.rotation = Quaternion.identity;   
+        }
         else
         {
 
@@ -100,14 +136,30 @@ public class GameManager : MonoBehaviour
                     else
                         player2Count++;
                 }
+              //  ResetChildPosition();
             }
         }
     }
+    void ResetChildPosition()
+    {
+        //공 회전 초기화
+        playerBall.transform.rotation = Quaternion.identity;
+        //큐 힘 초기화
+        cue.GetComponent<Rigidbody>().velocity = Vector3.zero;
+        cue.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
+        //큐 위치 초기화
+        cue.transform.localPosition = new Vector3(0, 0, -9);//cuePos;
+        cue.transform.rotation = Quaternion.identity;
+        cue.SetActive(true);
+        Debug.Log("ekdrms?");
+    }
     private void OnCollisionEnter(Collision collision)
     {
+        callCheck = true;
         Debug.Log("공굴러가유");
-        collision.gameObject.GetComponent<Collider>().enabled = false;
-        CheckTurn(collision.gameObject);
-        
+        CheckScore(collision.gameObject);
+        collision.gameObject.SetActive(false);
+//        collision.gameObject.GetComponent<Collider>().enabled = false;
     }
 }
+    
