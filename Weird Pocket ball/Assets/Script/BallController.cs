@@ -6,6 +6,7 @@ public class BallController : MonoBehaviour
     public float stopThreshold = 1.5f;
     private Rigidbody rb;
 
+
     void Start()
     {
         rb = GetComponent<Rigidbody>(); 
@@ -19,6 +20,7 @@ public class BallController : MonoBehaviour
             rb.velocity = Vector3.zero; 
             rb.angularVelocity = Vector3.zero;
             isStop = true;
+
         }
         else
             isStop = false;
