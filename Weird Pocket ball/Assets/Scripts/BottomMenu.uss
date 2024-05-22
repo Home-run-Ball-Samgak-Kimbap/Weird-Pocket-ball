@@ -1,0 +1,47 @@
+/* BottomMenu.uss */
+.menu-container {
+    display: flex;
+    flex-direction: row;
+    background-color: #2d2d2d;
+    padding: 10px;
+}
+
+.left-menu {
+    display: flex;
+    flex-direction: column;
+    width: 150px;
+    background-color: #2d2d2d;
+    padding: 10px;
+}
+
+.submenu-container {
+    display: flex;
+    flex-direction: column;
+    background-color: #3d3d3d;
+    padding-left: 10px;
+}
+
+.menu-button, .submenu-button {
+    margin: 5px 0;
+    padding: 10px;
+    background-color: #444;
+    color: white;
+    border: none;
+    text-align: left;
+    font-size: 14px;
+    background-image: url('/path/to/your/image.png'); /* 버튼 배경 이미지 */
+    background-size: cover; /* 배경 이미지 크기 설정 */
+    background-position: center; /* 배경 이미지 위치 설정 */
+}
+
+.menu-button:hover, .submenu-button:hover {
+    background-color: #555;
+}
+
+.submenu {
+    margin-left: 10px;
+}
+
+
+
+
