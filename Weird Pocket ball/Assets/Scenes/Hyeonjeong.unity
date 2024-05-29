@@ -1345,9 +1345,9 @@ GameObject:
   - component: {fileID: 614753538}
   - component: {fileID: 614753537}
   - component: {fileID: 614753536}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: BlackBall
-  m_TagString: Player1
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -17,7 +17,7 @@ public class CueController : MonoBehaviour
         {
             this.gameObject.SetActive(false);
             Debug.Log("cue.transform.position : " + this.gameObject.transform.position);
-            ball.GetComponent<Rigidbody>().AddForce(touchManager.rayPos * forceSlider.value * 50, ForceMode.Impulse);
+            ball.GetComponent<Rigidbody>().AddForce(ball.transform.position * forceSlider.value , ForceMode.Impulse);
             isStart = true;
         }
 

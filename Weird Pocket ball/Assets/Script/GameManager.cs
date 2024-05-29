@@ -11,9 +11,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] private int player2Count = 0;
 
     public GameObject player1Balls;
-    public Rigidbody[] player1BallsChildren;
+    public GameObject[] player1BallsChildren;
     public GameObject player2Balls;
-    public Rigidbody[] player2BallsChildren;
+    public GameObject[] player2BallsChildren;
     public GameObject cue;
     public GameObject playerBall;
 
@@ -43,8 +43,8 @@ public class GameManager : MonoBehaviour
         player1Count = 0;
         player2Count = 0;
         turn = true; //player 1 turn
-        player1BallsChildren = player1Balls.GetComponentsInChildren<Rigidbody>();
-        player2BallsChildren = player2Balls.GetComponentsInChildren<Rigidbody>();
+        player1BallsChildren = player1Balls.GetComponentsInChildren<GameObject>();
+        player2BallsChildren = player2Balls.GetComponentsInChildren<GameObject>();
     }
     IEnumerator CallBallMovementStatus()
     {
@@ -57,30 +57,32 @@ public class GameManager : MonoBehaviour
     {
         bool player1Move = false;
         bool player2Move = false;
-        foreach (Rigidbody rb in player1BallsChildren)
-        {
-            if (rb.velocity.magnitude > 0f) // 설정된 임계값보다 크면 움직이고 있다고 판단
+        foreach (GameObject ball in player1BallsChildren)
+        {            
+            if (!ball.GetComponent<BallController>().isStop)
             {
                 player1Move = true;
             }
         }
-        foreach (Rigidbody rb in player1BallsChildren)
+        foreach (GameObject ball in player1BallsChildren)
         {
-            if (rb.velocity.magnitude > 0f) // 설정된 임계값보다 크면 움직이고 있다고 판단
+            if (!ball.GetComponent<BallController>().isStop) // 설정된 임계값보다 크면 움직이고 있다고 판단
             {
                 player2Move = true;
             }
         }
-        if (!player1Move && !player2Move) isMove = false;
+        if (!player1Move && !player2Move) isMove = false; //모든 공이 멈춘 경우에
+
         if (isMove)
             yield return new WaitForSeconds(0.5f);
         else
         {
-            if (callCheck)
+            //멈췄다면
+            /*if (callCheck) //
             {
                 turn = !true;
                 callCheck = false;
-            }
+            }*/
             ResetChildPosition();
             yield break;
         }
@@ -142,6 +144,7 @@ public class GameManager : MonoBehaviour
     }
     void ResetChildPosition()
     {
+        Debug.Log("ResetCuePosition");
         //공 회전 초기화
         playerBall.transform.rotation = Quaternion.identity;
         //큐 힘 초기화
