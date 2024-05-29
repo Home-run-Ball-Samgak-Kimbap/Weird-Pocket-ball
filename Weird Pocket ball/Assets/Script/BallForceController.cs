@@ -11,6 +11,7 @@ public class BallForceController : MonoBehaviour, IEndDragHandler
     public GameObject ball;
     public GameObject cue;
     Rigidbody cueRb;
+    float beforeValue;
     private void Start()
     {
         cueRb = cue.GetComponent<Rigidbody>();
@@ -18,7 +19,11 @@ public class BallForceController : MonoBehaviour, IEndDragHandler
     }
     public void MoveCue()
     {
-        cue.transform.position -= touchManager.rayPos / 10 ;
+      Debug.Log("cue.transform.position.x : " + cue.transform.position.x + "forceSlider.value : " + forceSlider.value);
+      if(beforeValue > forceSlider.value)
+        cue.transform.position += new Vector3(forceSlider.value * 10, 0, forceSlider.value * 10);
+      else
+        cue.transform.position -= new Vector3( forceSlider.value * 10 , 0, forceSlider.value * 10);
     }
     public void OnEndDrag(PointerEventData eventData)
     {
