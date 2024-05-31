@@ -7,6 +7,10 @@ public class BottomMenuController : MonoBehaviour
     private VisualElement tableModeSubmenu;
     private VisualElement cueModeSubmenu;
 
+    public GameObject modeSelectionUI;
+    public GameObject gameplayUI;
+
+
     void OnEnable()
     {
         var uiDocument = GetComponent<UIDocument>();
@@ -42,6 +46,7 @@ public class BottomMenuController : MonoBehaviour
         btnStarTable.clicked += () => OnSubmenuButtonClicked("Star Table");
         btnSetCue.clicked += () => OnSubmenuButtonClicked("Set Cue");
         btnGun.clicked += () => OnSubmenuButtonClicked("Gun");
+        btnSetCue.clicked += OnCueModeSelected;
     }
 
     private void ToggleSubmenu(VisualElement submenu)
@@ -60,8 +65,23 @@ public class BottomMenuController : MonoBehaviour
     private void OnSubmenuButtonClicked(string submenu)
     {
         Debug.Log(submenu + " 버튼 클릭됨");
-        // 해당 서브메뉴 항목에 대한 로직을 여기에 추가합니다.
+
     }
+    private void OnCueModeSelected()
+    {
+        Debug.Log("큐 모드 선택됨");
+        // 모드 선택 UI를 비활성화하고 게임 플레이 UI를 활성화
+        if (modeSelectionUI != null && gameplayUI != null)
+        {
+            Debug.Log("게임플레이");
+            modeSelectionUI.SetActive(false);
+            gameplayUI.SetActive(true);
+        }
+        else
+        {
+            Debug.LogError("UI 오브젝트가 연결되지 않았습니다.");
+        }
+}
 }
 
 
