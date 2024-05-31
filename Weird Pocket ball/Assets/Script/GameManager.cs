@@ -1,7 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UIElements;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -16,6 +19,9 @@ public class GameManager : MonoBehaviour
     public GameObject[] player2BallsChildren;
     public GameObject cue;
     public GameObject playerBall;
+    public GameObject resultUI;
+
+    public TextMeshProUGUI result;
 
     Vector3 cuePos;
 
@@ -97,24 +103,37 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-
             if (ball.name == "BlackBall")
             {
                 if (turn) //player1畔
                 {
                     if (player1Count == countchecker)
+                    {
                         Debug.Log("BlackBall | Player1 铰府");
+                        result.text = "Player1\n铰府";
+                    }
                     else
+                    {
                         Debug.Log("BlackBall | player2 铰府");
+                        result.text = "Player2\n铰府";
+
+                    }
                 }
 
                 else
                 {
                     if (player2Count == countchecker)
+                    {
                         Debug.Log("BlackBall | Player2 铰府");
+                        result.text = "Player2\n铰府";
+                    }
                     else
+                    {
                         Debug.Log("BlackBall | player1 铰府");
+                        result.text = "Player1\n铰府";
+                    }
                 }
+                resultUI.SetActive(true);
             }
             else
             {
@@ -163,6 +182,11 @@ public class GameManager : MonoBehaviour
         CheckScore(collision.gameObject);
         collision.gameObject.SetActive(false);
 //        collision.gameObject.GetComponent<Collider>().enabled = false;
+    }
+    public void GameEnd()
+    {
+        resultUI.SetActive(false);
+
     }
 }
     
