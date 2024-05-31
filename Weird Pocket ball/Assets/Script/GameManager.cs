@@ -14,9 +14,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] private int player2Count = 0;
 
     public GameObject player1Balls;
-    public GameObject[] player1BallsChildren;
+    public Transform[] player1BallsChildren;
     public GameObject player2Balls;
-    public GameObject[] player2BallsChildren;
+    public Transform[] player2BallsChildren;
     public GameObject cue;
     public GameObject playerBall;
     public GameObject resultUI;
@@ -49,8 +49,9 @@ public class GameManager : MonoBehaviour
         player1Count = 0;
         player2Count = 0;
         turn = true; //player 1 turn
-        player1BallsChildren = player1Balls.GetComponentsInChildren<GameObject>();
-        player2BallsChildren = player2Balls.GetComponentsInChildren<GameObject>();
+
+        player1BallsChildren = player1Balls.GetComponentsInChildren<Transform>();
+        player2BallsChildren = player2Balls.GetComponentsInChildren<Transform>();
     }
     IEnumerator CallBallMovementStatus()
     {
@@ -63,14 +64,14 @@ public class GameManager : MonoBehaviour
     {
         bool player1Move = false;
         bool player2Move = false;
-        foreach (GameObject ball in player1BallsChildren)
+        foreach (Transform ball in player1BallsChildren)
         {            
             if (!ball.GetComponent<BallController>().isStop)
             {
                 player1Move = true;
             }
         }
-        foreach (GameObject ball in player1BallsChildren)
+        foreach (Transform ball in player1BallsChildren)
         {
             if (!ball.GetComponent<BallController>().isStop) // 설정된 임계값보다 크면 움직이고 있다고 판단
             {
