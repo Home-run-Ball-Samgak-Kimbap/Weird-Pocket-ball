@@ -1,10 +1,14 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class BallController : MonoBehaviour
 {
-    public bool isStop;
+    public bool isStop = true;
     public float stopThreshold = 1.5f;
+    public AudioClip clip;
+    public AudioSource audioSource;
     private Rigidbody rb;
+
 
 
     void Start()
@@ -14,15 +18,32 @@ public class BallController : MonoBehaviour
 
     void Update()
     {
-       // Debug.Log(rb.velocity.magnitude);
-        if (rb.velocity.magnitude < stopThreshold)
+        Debug.Log("isStop : " + isStop);
+        
+        // Debug.Log(rb.velocity.magnitude);
+        
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        audioSource.clip = clip;
+        audioSource.Play();
+        
+    }
+    private void OnCollisionStay(Collision collision)
+    {
+        if (collision.gameObject.name != "CornerCollisionDetector")
         {
-            rb.velocity = Vector3.zero; 
-            rb.angularVelocity = Vector3.zero;
-            isStop = true; //¸ØÃã
-
+            if (rb.velocity.magnitude < stopThreshold)
+            {
+                rb.velocity = Vector3.zero;
+                rb.angularVelocity = Vector3.zero;
+                isStop = true; //¸ØÃã
+            }
+           // else if (rb.velocity == Vector3.zero)
+             //   isStop = true;
+            else
+                isStop = false;
         }
-        else
-            isStop = false;
+        
     }
 }

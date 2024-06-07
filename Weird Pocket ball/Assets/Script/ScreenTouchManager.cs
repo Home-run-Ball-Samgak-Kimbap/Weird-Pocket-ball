@@ -6,8 +6,9 @@ using UnityEngine.UI;
 public class ScreenTouchManager : MonoBehaviour
 {
     public GameObject ball;
-    public GameObject cue;
+    //public GameObject cue;
     public Vector3 rayPos;
+    public static bool isTouch;
 
 
     LineRenderer cueLineRenderer;
@@ -21,16 +22,16 @@ public class ScreenTouchManager : MonoBehaviour
 
     private void OnMouseDown()
     {
+        
         prevPos = new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10);
         cueLineRenderer.GetComponent<LineRenderer>().enabled = true;
-        cue.SetActive(true);
+        isTouch = true;
+        //cue.SetActive(true);
        
     }
     private void OnMouseUp()
     {
         Debug.Log("OnMouseUp");
-              
-        
        
     }
     private void OnMouseDrag()
@@ -40,7 +41,7 @@ public class ScreenTouchManager : MonoBehaviour
         //cueController.DrowLineRenderer(mousePos);
         Vector3 mousePos = new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10); // 마우스 위치
         Vector2 direction = (prevPos - mousePos).normalized;
-        Debug.Log(direction);
+        //Debug.Log(direction);
         rayPos = new Vector3(direction.x, 0, direction.y);
 
         RaycastHit hit;
