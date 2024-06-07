@@ -1,12 +1,9 @@
 fileFormatVersion: 2
-guid: 044a6a9767d414ab9a0bb9d9dd8e76e8
+guid: 360fec52355e5084fa0a449768599578
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences:
-  - modeSelectionUI: {instanceID: 0}
-  - gameplayUI: {instanceID: 0}
-  - SoundManager: {instanceID: 0}
+  defaultReferences: []
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

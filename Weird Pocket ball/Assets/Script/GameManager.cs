@@ -8,56 +8,48 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    bool isMove = false;
+    public bool isStop = false;
     [SerializeField] private bool turn;
     [SerializeField] private int player1Count = 0;
     [SerializeField] private int player2Count = 0;
 
-    public GameObject player1Balls;
     public GameObject[] player1BallsChildren;
-    public GameObject player2Balls;
     public GameObject[] player2BallsChildren;
+    public GameObject[] Balls;
     public GameObject cue;
     public GameObject playerBall;
+    public GameObject balckBall;
     public GameObject resultUI;
+
+    public bool player1Move = false;
+    public bool player2Move = false;
+    public bool boolMove;
 
     public TextMeshProUGUI result;
 
-    Vector3 cuePos;
-
-    bool callCheck;
-
-
     public int countchecker = 3;
+    
+    private void Start()
+    {
+        player1Count = 0;
+        player2Count = 0;
+        turn = true;
+    }
     private void Update()
     {
         if (CueController.isStart)
         {
-            CueController.isStart = false;
-            StartCoroutine(CallBallMovementStatus());
+            Debug.Log("lets go");
+            BallMovementStatus2();
         }
     }
-    private void Start()
-    {
-        GameStart();
-        cuePos = cue.transform.position;
-        Debug.Log("cue.transform.position : " + cue.transform.localPosition);
 
-    }
-    public void GameStart()
-    {
-        player1Count = 0;
-        player2Count = 0;
-        turn = true; //player 1 turn
-        player1BallsChildren = player1Balls.GetComponentsInChildren<GameObject>();
-        player2BallsChildren = player2Balls.GetComponentsInChildren<GameObject>();
-    }
     IEnumerator CallBallMovementStatus()
     {
         yield return new WaitForSecondsRealtime(5);
         Debug.Log("ekdrms? 555");
 
-        StartCoroutine(BallMovementStatus());      
+      //  StartCoroutine(BallMovementStatus());      
     }
     IEnumerator BallMovementStatus()
     {
@@ -77,91 +69,127 @@ public class GameManager : MonoBehaviour
                 player2Move = true;
             }
         }
-        if (!player1Move && !player2Move) isMove = false; //¸ðµç °øÀÌ ¸ØÃá °æ¿ì¿¡
+        if (!player1Move && !player2Move) //isStop = true; //¸ðµç °øÀÌ ¸ØÃá °æ¿ì¿¡
 
-        if (isMove)
-            yield return new WaitForSeconds(0.5f);
+        //if (isStop)
+        {
+            Debug.Log("isStop!"); 
+            ResetPosition();
+            yield break;
+        }
         else
         {
+            yield return new WaitForSeconds(0.1f);
             //¸ØÃè´Ù¸é
             /*if (callCheck) //
             {
                 turn = !true;
                 callCheck = false;
             }*/
-            ResetChildPosition();
-            yield break;
         }
+    }
+    void BallMovementStatus2()
+    {
+        
+        bool playerBallMove = playerBall.GetComponent<BallController>().isStop;
+        bool blackBallMove = balckBall.GetComponent<BallController>().isStop;
+        boolMove = false;
+        while (!boolMove)
+        {
+            foreach (GameObject ball in Balls)
+            {
+                if (!ball.GetComponent<BallController>().isStop)
+                {
+                    boolMove = true;
+                }
+            }
+        }
+        /*
+        do
+        {
+            player1Move = false;
+            player2Move = false;
+            foreach (GameObject ball in player1BallsChildren)
+            {
+                if (!ball.GetComponent<BallController>().isStop)
+                {
+                    player1Move = true;
+                }
+            }
+            foreach (GameObject ball in player1BallsChildren)
+            {
+                if (!ball.GetComponent<BallController>().isStop) // ¼³Á¤µÈ ÀÓ°è°ªº¸´Ù Å©¸é ¿òÁ÷ÀÌ°í ÀÖ´Ù°í ÆÇ´Ü
+                {
+                    player2Move = true;
+                }
+            }
+            Debug.Log("!player1Move" + !player1Move + "!player2Move" + !player2Move + "playerBallMove" + playerBallMove + "blackBallMove" + blackBallMove);
+        } while(!player1Move && !player2Move && playerBallMove && blackBallMove);
+        */
+        Debug.Log("isStop!");
+        ResetPosition();
+        CueController.isStart = false;
     }
     public void CheckScore(GameObject ball)
     {
-        if (ball.name == "Ball")
+        ball.SetActive(false);
+        if (ball.name == "BlackBall")
         {
-            turn = !turn;
-            playerBall.transform.position = new Vector3(0, -24, 0);
-            playerBall.transform.rotation = Quaternion.identity;   
-        }
-        else
-        {
-            if (ball.name == "BlackBall")
+            if (turn) //player1ÅÏ
             {
-                if (turn) //player1ÅÏ
+                if (player1Count == countchecker)
                 {
-                    if (player1Count == countchecker)
-                    {
-                        Debug.Log("BlackBall | Player1 ½Â¸®");
-                        result.text = "Player1\n½Â¸®";
-                    }
-                    else
-                    {
-                        Debug.Log("BlackBall | player2 ½Â¸®");
-                        result.text = "Player2\n½Â¸®";
-
-                    }
+                    Debug.Log("BlackBall | Player1 ½Â¸®");
+                    result.text = "Player1\n½Â¸®";
                 }
-
                 else
                 {
-                    if (player2Count == countchecker)
-                    {
-                        Debug.Log("BlackBall | Player2 ½Â¸®");
-                        result.text = "Player2\n½Â¸®";
-                    }
-                    else
-                    {
-                        Debug.Log("BlackBall | player1 ½Â¸®");
-                        result.text = "Player1\n½Â¸®";
-                    }
+                    Debug.Log("BlackBall | player2 ½Â¸®");
+                    result.text = "Player2\n½Â¸®";
                 }
-                resultUI.SetActive(true);
             }
             else
             {
-                if (turn)
-                {//player1ÀÇ turn¿¡¼­ player1°øÀÌ ¾Æ´Ñ °øÀ» ³ÖÀ¸¸é
-                    if (ball.tag != "Player1")
-                    {
-                        turn = false;
-                        player2Count++;
-                    }
-                    else
-                        player1Count++;
+                if (player2Count == countchecker)
+                {
+                    Debug.Log("BlackBall | Player2 ½Â¸®");
+                    result.text = "Player2\n½Â¸®";
                 }
                 else
                 {
-                    if (ball.tag != "Player2")
-                    {
-                        turn = true;
-                        player1Count++;
-                    }
-                    else
-                        player2Count++;
+                    Debug.Log("BlackBall | player1 ½Â¸®");
+                    result.text = "Player1\n½Â¸®";
                 }
-              //  ResetChildPosition();
             }
+            resultUI.SetActive(true);
+        }
+        else
+        {
+            if (turn)
+            {//player1ÀÇ turn¿¡¼­ player1°øÀÌ ¾Æ´Ñ °øÀ» ³ÖÀ¸¸é
+                if (ball.tag != "Player1")
+                {
+                    turn = false;
+                    player2Count++;
+                }
+                else
+                    player1Count++;
+            }
+            else
+            {
+                if (ball.tag != "Player2")
+                {
+                    turn = true;
+                    player1Count++;
+                }
+                else
+                    player2Count++;
+            }
+            //  ResetChildPosition();
         }
     }
-    void ResetChildPosition()
+        
+    void ResetPosition()
     {
         Debug.Log("ResetCuePosition");
         //°ø È¸Àü ÃÊ±âÈ­
@@ -173,15 +201,17 @@ public class GameManager : MonoBehaviour
         cue.transform.localPosition = new Vector3(0, 0, -9);//cuePos;
         cue.transform.rotation = Quaternion.identity;
         cue.SetActive(true);
-        Debug.Log("ekdrms?");
     }
     private void OnCollisionEnter(Collision collision)
     {
-        callCheck = true;
         Debug.Log("°ø±¼·¯°¡À¯");
-        CheckScore(collision.gameObject);
-        collision.gameObject.SetActive(false);
-//        collision.gameObject.GetComponent<Collider>().enabled = false;
+        if (collision.gameObject.tag == "Ball")
+        {
+            turn = !turn;
+            playerBall.transform.position = new Vector3(0, -24, 0);
+        }
+        else
+            CheckScore(collision.gameObject);
     }
     public void GameEnd()
     {
