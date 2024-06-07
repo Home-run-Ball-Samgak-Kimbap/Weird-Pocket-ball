@@ -10,25 +10,18 @@ public class CueController : MonoBehaviour
     public ScreenTouchManager touchManager;
     public GameObject ball;
     public static bool isStart;
+    public GameManager gameManager;
 
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("test1"+ScreenTouchManager.isTouch);
-
-        if (ScreenTouchManager.isTouch)
+        if (collision.gameObject.tag == "ball")
         {
-            ScreenTouchManager.isTouch = false;
-
-            if (collision.gameObject.tag == "ball")
-            {
-                this.gameObject.SetActive(false);
-                Debug.Log("cue.transform.position : " + this.gameObject.transform.position);
-                ball.GetComponent<Rigidbody>().AddForce(ball.transform.position * forceSlider.value, ForceMode.Impulse);
-                isStart = true;
-            }
-
+            Debug.Log("cue.transform.position : " + this.gameObject.transform.position);
+            ball.GetComponent<Rigidbody>().AddForce(ball.transform.position * forceSlider.value, ForceMode.Impulse);
+            isStart = true;
+            this.gameObject.SetActive(false);
+            gameManager.BallMovementStatus();
         }
-
-
+        
     }
 }

@@ -13,8 +13,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] private int player1Count = 0;
     [SerializeField] private int player2Count = 0;
 
-    public GameObject[] player1BallsChildren;
-    public GameObject[] player2BallsChildren;
     public GameObject[] Balls;
     public GameObject cue;
     public GameObject playerBall;
@@ -28,107 +26,39 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI result;
 
     public int countchecker = 3;
-    
+    float velocity;
+
+
+
     private void Start()
     {
         player1Count = 0;
         player2Count = 0;
         turn = true;
     }
-    private void Update()
-    {
-        if (CueController.isStart)
-        {
-            Debug.Log("lets go");
-            BallMovementStatus2();
-        }
-    }
 
-    IEnumerator CallBallMovementStatus()
+    public void BallMovementStatus()
     {
-        yield return new WaitForSecondsRealtime(5);
-        Debug.Log("ekdrms? 555");
-
-      //  StartCoroutine(BallMovementStatus());      
+        cue.SetActive(false);
+        Debug.Log("velocity" + velocity);
+        StartCoroutine("CheckVelocity");
     }
-    IEnumerator BallMovementStatus()
+    IEnumerator CheckVelocity()
     {
-        bool player1Move = false;
-        bool player2Move = false;
-        foreach (GameObject ball in player1BallsChildren)
-        {            
-            if (!ball.GetComponent<BallController>().isStop)
-            {
-                player1Move = true;
-            }
-        }
-        foreach (GameObject ball in player1BallsChildren)
-        {
-            if (!ball.GetComponent<BallController>().isStop) // 설정된 임계값보다 크면 움직이고 있다고 판단
-            {
-                player2Move = true;
-            }
-        }
-        if (!player1Move && !player2Move) //isStop = true; //모든 공이 멈춘 경우에
-
-        //if (isStop)
-        {
-            Debug.Log("isStop!"); 
-            ResetPosition();
-            yield break;
-        }
-        else
-        {
-            yield return new WaitForSeconds(0.1f);
-            //멈췄다면
-            /*if (callCheck) //
-            {
-                turn = !true;
-                callCheck = false;
-            }*/
-        }
-    }
-    void BallMovementStatus2()
-    {
-        
-        bool playerBallMove = playerBall.GetComponent<BallController>().isStop;
-        bool blackBallMove = balckBall.GetComponent<BallController>().isStop;
-        boolMove = false;
-        while (!boolMove)
-        {
-            foreach (GameObject ball in Balls)
-            {
-                if (!ball.GetComponent<BallController>().isStop)
-                {
-                    boolMove = true;
-                }
-            }
-        }
-        /*
         do
         {
-            player1Move = false;
-            player2Move = false;
-            foreach (GameObject ball in player1BallsChildren)
+            velocity = 0;
+            foreach (GameObject ball in Balls)
             {
-                if (!ball.GetComponent<BallController>().isStop)
-                {
-                    player1Move = true;
-                }
+                Rigidbody ballrig = ball.GetComponent<Rigidbody>();
+                velocity += ballrig.velocity.magnitude;
             }
-            foreach (GameObject ball in player1BallsChildren)
-            {
-                if (!ball.GetComponent<BallController>().isStop) // 설정된 임계값보다 크면 움직이고 있다고 판단
-                {
-                    player2Move = true;
-                }
-            }
-            Debug.Log("!player1Move" + !player1Move + "!player2Move" + !player2Move + "playerBallMove" + playerBallMove + "blackBallMove" + blackBallMove);
-        } while(!player1Move && !player2Move && playerBallMove && blackBallMove);
-        */
-        Debug.Log("isStop!");
+          //  Debug.Log("velocity" + velocity);
+            yield return new WaitForSeconds(0.5f);
+        } while (velocity > 0);
         ResetPosition();
-        CueController.isStart = false;
+        ScreenTouchManager.isTouch = false;
+        StopCoroutine(CheckVelocity());
     }
     public void CheckScore(GameObject ball)
     {
@@ -205,6 +135,7 @@ public class GameManager : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         Debug.Log("공굴러가유");
+        collision.gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
         if (collision.gameObject.tag == "Ball")
         {
             turn = !turn;

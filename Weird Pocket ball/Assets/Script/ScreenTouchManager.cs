@@ -25,6 +25,7 @@ public class ScreenTouchManager : MonoBehaviour
         
         prevPos = new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10);
         cueLineRenderer.GetComponent<LineRenderer>().enabled = true;
+        Debug.Log("isTouch is true!!!");
         isTouch = true;
         //cue.SetActive(true);
        

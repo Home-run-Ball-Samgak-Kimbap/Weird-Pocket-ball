@@ -3762,22 +3762,6 @@ MonoBehaviour:
   turn: 0
   player1Count: 0
   player2Count: 0
-  player1BallsChildren:
-  - {fileID: 579795641}
-  - {fileID: 1732986280}
-  - {fileID: 794971896}
-  - {fileID: 105349506}
-  - {fileID: 845085661}
-  - {fileID: 861890501}
-  - {fileID: 886287359}
-  player2BallsChildren:
-  - {fileID: 786647507}
-  - {fileID: 991380219}
-  - {fileID: 4254055}
-  - {fileID: 587675055}
-  - {fileID: 2009875897}
-  - {fileID: 219598661}
-  - {fileID: 117738502}
   Balls:
   - {fileID: 579795641}
   - {fileID: 1732986280}
@@ -4863,6 +4847,10 @@ PrefabInstance:
       propertyPath: forceSlider
       value: 
       objectReference: {fileID: 829709267}
+    - target: {fileID: 9179100024244782436, guid: b2ba2323793b4bf4ea0839e716614b0c, type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 1356064003}
     - target: {fileID: 9179100024244782436, guid: b2ba2323793b4bf4ea0839e716614b0c, type: 3}
       propertyPath: touchManager
       value: 
