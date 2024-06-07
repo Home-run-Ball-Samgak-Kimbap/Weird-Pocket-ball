@@ -281,6 +281,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isStop: 0
   stopThreshold: 1.5
+  clip: {fileID: 0}
+  audioSource: {fileID: 0}
 --- !u!1001 &105349504
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -391,6 +393,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isStop: 0
   stopThreshold: 1.5
+  clip: {fileID: 0}
+  audioSource: {fileID: 0}
 --- !u!135 &105349508
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -597,6 +601,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isStop: 0
   stopThreshold: 1.5
+  clip: {fileID: 0}
+  audioSource: {fileID: 0}
 --- !u!1 &131140127 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1440510253428786630, guid: b2ba2323793b4bf4ea0839e716614b0c, type: 3}
@@ -863,6 +869,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isStop: 0
   stopThreshold: 1.5
+  clip: {fileID: 0}
+  audioSource: {fileID: 0}
 --- !u!1 &316408424 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 183115597186583128, guid: b2ba2323793b4bf4ea0839e716614b0c, type: 3}
@@ -1125,6 +1133,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isStop: 0
   stopThreshold: 1.5
+  clip: {fileID: 0}
+  audioSource: {fileID: 0}
 --- !u!135 &579795643
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1331,6 +1341,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isStop: 0
   stopThreshold: 1.5
+  clip: {fileID: 0}
+  audioSource: {fileID: 0}
 --- !u!1 &614753535
 GameObject:
   m_ObjectHideFlags: 0
@@ -1366,6 +1378,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isStop: 0
   stopThreshold: 0.5
+  clip: {fileID: 0}
+  audioSource: {fileID: 0}
 --- !u!54 &614753537
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1729,6 +1743,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isStop: 0
   stopThreshold: 1.5
+  clip: {fileID: 0}
+  audioSource: {fileID: 0}
 --- !u!1001 &794971894
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1839,6 +1855,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isStop: 0
   stopThreshold: 1.5
+  clip: {fileID: 0}
+  audioSource: {fileID: 0}
 --- !u!135 &794971898
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -2012,6 +2030,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isStop: 0
   stopThreshold: 0.5
+  clip: {fileID: 0}
+  audioSource: {fileID: 0}
 --- !u!54 &828054404
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2339,6 +2359,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isStop: 0
   stopThreshold: 1.5
+  clip: {fileID: 0}
+  audioSource: {fileID: 0}
 --- !u!135 &845085663
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -2572,6 +2594,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isStop: 0
   stopThreshold: 1.5
+  clip: {fileID: 0}
+  audioSource: {fileID: 0}
 --- !u!135 &861890503
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -2730,6 +2754,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isStop: 0
   stopThreshold: 1.5
+  clip: {fileID: 0}
+  audioSource: {fileID: 0}
 --- !u!135 &886287361
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -2936,6 +2962,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isStop: 0
   stopThreshold: 1.5
+  clip: {fileID: 0}
+  audioSource: {fileID: 0}
 --- !u!1 &1007711146
 GameObject:
   m_ObjectHideFlags: 0
@@ -3129,7 +3157,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ball: {fileID: 131140127}
-  cue: {fileID: 316408424}
   rayPos: {x: 0, y: 0, z: 0}
 --- !u!1 &1164912700
 GameObject:
@@ -3279,6 +3306,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isStop: 0
   stopThreshold: 0.5
+  clip: {fileID: 0}
+  audioSource: {fileID: 0}
 --- !u!1 &1200345876
 GameObject:
   m_ObjectHideFlags: 0
@@ -3626,15 +3655,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16edbe29fe79c2445a86f69474206a64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isStop: 0
   turn: 0
   player1Count: 0
   player2Count: 0
-  player1Balls: {fileID: 1621897626}
   player1BallsChildren: []
-  player2Balls: {fileID: 1394307654}
   player2BallsChildren: []
+  Balls: []
   cue: {fileID: 316408424}
   playerBall: {fileID: 131140127}
+  balckBall: {fileID: 0}
+  resultUI: {fileID: 0}
+  player1Move: 0
+  player2Move: 0
+  boolMove: 0
+  result: {fileID: 0}
   countchecker: 3
 --- !u!1 &1394307654
 GameObject:
@@ -4034,6 +4069,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isStop: 0
   stopThreshold: 1.5
+  clip: {fileID: 0}
+  audioSource: {fileID: 0}
 --- !u!135 &1732986282
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -4132,6 +4169,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isStop: 0
   stopThreshold: 0.5
+  clip: {fileID: 0}
+  audioSource: {fileID: 0}
 --- !u!54 &1747838606
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4307,6 +4346,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isStop: 0
   stopThreshold: 0.5
+  clip: {fileID: 0}
+  audioSource: {fileID: 0}
 --- !u!54 &1850350162
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4563,6 +4604,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isStop: 0
   stopThreshold: 1.5
+  clip: {fileID: 0}
+  audioSource: {fileID: 0}
 --- !u!1001 &3687621935835975876
 PrefabInstance:
   m_ObjectHideFlags: 0

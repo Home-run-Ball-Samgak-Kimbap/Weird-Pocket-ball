@@ -14,6 +14,11 @@ public class BottomMenuController : MonoBehaviour
     private string selectedBallMode;
     private string selectedTableMode;
     private string selectedCueMode;
+    int selectedBallModeNum = 0;
+    int selectedTableModeNum = 0;
+    int selectedCueModeNum = 0;
+
+    public GameObject GameSetButton;
 
     void OnEnable()
     {
@@ -51,7 +56,6 @@ public class BottomMenuController : MonoBehaviour
         btnStarTable.clicked += () => { OnTableModeButtonClicked("Star Table"); OnSfx(); };
         btnSetCue.clicked += () => { OnCueModeButtonClicked("Set Cue"); OnSfx(); };
         btnGun.clicked += () => { OnCueModeButtonClicked("Gun"); OnSfx(); };
-        btnSetCue.clicked += OnCueModeSelected;
     }
 
     private void ToggleSubmenu(VisualElement submenu)
@@ -67,12 +71,30 @@ public class BottomMenuController : MonoBehaviour
         cueModeSubmenu.style.display = DisplayStyle.None;
     }
 
+
     private void OnBallModeButtonClicked(string mode)
     {
         selectedBallMode = mode;
         Debug.Log(mode + " 버튼 클릭됨");
         // 다음 모드인 테이블 모드로 넘어가기
-        ToggleSubmenu(tableModeSubmenu);
+        Debug.Log("selectedBallModeNum = 1");
+        selectedBallModeNum = 1;
+        // ToggleSubmenu(ballModeSubmenu);
+        if (selectedBallModeNum == 1 & selectedTableModeNum == 1 & selectedCueModeNum == 1){
+            Debug.Log("ball에서 페이지 넘어감");
+            // GameSetButtonScript.ShowButton();
+            GameSetButton.SetActive(true);
+            // if (GameSetButton != null)
+            // {
+            //     // 버튼을 활성화합니다.
+            //     GameSetButton.SetActive(true);
+            // }
+            // else
+            // {
+            //     Debug.LogError("GameSetButton에 대한 참조가 설정되지 않았습니다.");
+            // }
+            // OnCueModeSelected();
+        }
     }
 
     private void OnTableModeButtonClicked(string mode)
@@ -80,14 +102,39 @@ public class BottomMenuController : MonoBehaviour
         selectedTableMode = mode;
         Debug.Log(mode + " 버튼 클릭됨");
         // 다음 모드인 큐 모드로 넘어가기
-        ToggleSubmenu(cueModeSubmenu);
+        Debug.Log("selectedTableModeNum = 1");
+        selectedTableModeNum = 1;
+        // ToggleSubmenu(tableModeSubmenu);
+        if (selectedBallModeNum == 1 & selectedTableModeNum == 1 & selectedCueModeNum == 1){
+            Debug.Log("Table에서 페이지 넘어감");
+            GameSetButton.SetActive(true);
+            // GameSetButtonScript.ShowButton();
+            // if (GameSetButtonScript != null)
+            // {
+            //     // 버튼을 활성화합니다.
+            //     GameSetButtonScript.SetActive(true);
+            // }
+            // else
+            // {
+            //     Debug.LogError("GameSetButtonScript에 대한 참조가 설정되지 않았습니다.");
+            // }
+            // OnCueModeSelected();
+        }
     }
 
     private void OnCueModeButtonClicked(string mode)
     {
         selectedCueMode = mode;
         Debug.Log(mode + " 버튼 클릭됨");
-        OnCueModeSelected();
+        Debug.Log("selectedCueModeNum = 1");
+        selectedCueModeNum = 1;
+        // ToggleSubmenu(cueModeSubmenu);
+        if (selectedBallModeNum == 1 & selectedTableModeNum == 1 & selectedCueModeNum == 1){
+            Debug.Log("Cue에서 페이지 넘어감");
+            // GameSetButtonScript.ShowButton();
+            GameSetButton.SetActive(true);
+            // OnCueModeSelected();
+        }
     }
 
     private void OnCueModeSelected()
@@ -105,7 +152,10 @@ public class BottomMenuController : MonoBehaviour
             Debug.LogError("UI 오브젝트가 연결되지 않았습니다.");
         }
     }
-        public void OnSfx(){
+    public void NextButton(){
+        OnCueModeSelected();
+    }
+    public void OnSfx(){
 
         if (SoundManager != null ){
 
