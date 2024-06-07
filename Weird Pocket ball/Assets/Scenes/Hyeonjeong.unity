@@ -280,7 +280,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isStop: 0
-  stopThreshold: 1.5
+  stopThreshold: 0.5
   clip: {fileID: 8300000, guid: 19e063d861dd88441999028000ef4d9f, type: 3}
   audioSource: {fileID: 227864216}
 --- !u!1001 &105349504
@@ -392,7 +392,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isStop: 0
-  stopThreshold: 1.5
+  stopThreshold: 0.5
   clip: {fileID: 8300000, guid: 19e063d861dd88441999028000ef4d9f, type: 3}
   audioSource: {fileID: 227864216}
 --- !u!135 &105349508
@@ -600,7 +600,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isStop: 0
-  stopThreshold: 1.5
+  stopThreshold: 0.5
   clip: {fileID: 8300000, guid: 19e063d861dd88441999028000ef4d9f, type: 3}
   audioSource: {fileID: 227864216}
 --- !u!1 &131140127 stripped
@@ -869,7 +869,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isStop: 0
-  stopThreshold: 1.5
+  stopThreshold: 0.5
   clip: {fileID: 8300000, guid: 19e063d861dd88441999028000ef4d9f, type: 3}
   audioSource: {fileID: 227864216}
 --- !u!1 &227864214
@@ -1261,7 +1261,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isStop: 0
-  stopThreshold: 1.5
+  stopThreshold: 0.5
   clip: {fileID: 8300000, guid: 19e063d861dd88441999028000ef4d9f, type: 3}
   audioSource: {fileID: 227864216}
 --- !u!135 &579795643
@@ -1547,7 +1547,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isStop: 0
-  stopThreshold: 1.5
+  stopThreshold: 0.5
   clip: {fileID: 8300000, guid: 19e063d861dd88441999028000ef4d9f, type: 3}
   audioSource: {fileID: 227864216}
 --- !u!1001 &660485488
@@ -2011,7 +2011,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isStop: 0
-  stopThreshold: 1.5
+  stopThreshold: 0.5
   clip: {fileID: 8300000, guid: 19e063d861dd88441999028000ef4d9f, type: 3}
   audioSource: {fileID: 227864216}
 --- !u!1001 &794971894
@@ -2123,7 +2123,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isStop: 0
-  stopThreshold: 1.5
+  stopThreshold: 0.5
   clip: {fileID: 8300000, guid: 19e063d861dd88441999028000ef4d9f, type: 3}
   audioSource: {fileID: 227864216}
 --- !u!135 &794971898
@@ -2477,7 +2477,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isStop: 0
-  stopThreshold: 1.5
+  stopThreshold: 0.5
   clip: {fileID: 8300000, guid: 19e063d861dd88441999028000ef4d9f, type: 3}
   audioSource: {fileID: 227864216}
 --- !u!135 &845085663
@@ -2712,7 +2712,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isStop: 0
-  stopThreshold: 1.5
+  stopThreshold: 0.5
   clip: {fileID: 8300000, guid: 19e063d861dd88441999028000ef4d9f, type: 3}
   audioSource: {fileID: 227864216}
 --- !u!135 &861890503
@@ -2872,7 +2872,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isStop: 0
-  stopThreshold: 1.5
+  stopThreshold: 0.5
   clip: {fileID: 8300000, guid: 19e063d861dd88441999028000ef4d9f, type: 3}
   audioSource: {fileID: 227864216}
 --- !u!135 &886287361
@@ -3080,7 +3080,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isStop: 0
-  stopThreshold: 1.5
+  stopThreshold: 0.5
   clip: {fileID: 8300000, guid: 19e063d861dd88441999028000ef4d9f, type: 3}
   audioSource: {fileID: 227864216}
 --- !u!1 &1007711146
@@ -4384,7 +4384,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isStop: 0
-  stopThreshold: 1.5
+  stopThreshold: 0.5
   clip: {fileID: 8300000, guid: 19e063d861dd88441999028000ef4d9f, type: 3}
   audioSource: {fileID: 227864216}
 --- !u!135 &1732986282
@@ -4447,7 +4447,7 @@ MeshCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1781225907}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 46ad811c7a53fa74caaf9820b663f1c5, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -4752,7 +4752,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isStop: 0
-  stopThreshold: 1.5
+  stopThreshold: 0.5
   clip: {fileID: 8300000, guid: 19e063d861dd88441999028000ef4d9f, type: 3}
   audioSource: {fileID: 227864216}
 --- !u!1001 &3687621935835975876
@@ -4766,6 +4766,22 @@ PrefabInstance:
     - target: {fileID: 1440510253428786630, guid: b2ba2323793b4bf4ea0839e716614b0c, type: 3}
       propertyPath: m_Name
       value: CueBall
+      objectReference: {fileID: 0}
+    - target: {fileID: 2445122822793436401, guid: b2ba2323793b4bf4ea0839e716614b0c, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 2445122822793436401, guid: b2ba2323793b4bf4ea0839e716614b0c, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 2445122822793436401, guid: b2ba2323793b4bf4ea0839e716614b0c, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 2445122822793436401, guid: b2ba2323793b4bf4ea0839e716614b0c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -12
       objectReference: {fileID: 0}
     - target: {fileID: 2710062481656299568, guid: b2ba2323793b4bf4ea0839e716614b0c, type: 3}
       propertyPath: m_LocalScale.x

@@ -32,7 +32,6 @@ public class BallForceController : MonoBehaviour, IEndDragHandler
     public void OnEndDrag(PointerEventData eventData)
     {
         Debug.Log("Drag ended");
-        forceSlider.value = 0;
         Debug.Log("isTouch"+ScreenTouchManager.isTouch);
         if (ScreenTouchManager.isTouch)
         {
@@ -42,5 +41,7 @@ public class BallForceController : MonoBehaviour, IEndDragHandler
             ball.GetComponent<LineRenderer>().enabled = false;
             ScreenTouchManager.isTouch = false;
         }
+        forceSlider.value = 0;
+
     }
 }

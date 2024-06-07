@@ -128,7 +128,7 @@ public class GameManager : MonoBehaviour
         cue.GetComponent<Rigidbody>().velocity = Vector3.zero;
         cue.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
         //큐 위치 초기화
-        cue.transform.localPosition = new Vector3(0, 0, -9);//cuePos;
+        cue.transform.localPosition = new Vector3(0, 0, -12);//cuePos;
         cue.transform.rotation = Quaternion.identity;
         cue.SetActive(true);
     }
