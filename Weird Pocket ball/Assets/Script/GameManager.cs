@@ -21,6 +21,8 @@ public class GameManager : MonoBehaviour
     public GameObject gameSet;
     public GameObject resetPos;
 
+    public Vector3 cuePos;
+
 
     public TextMeshProUGUI result;
     public TextMeshProUGUI turnUI;
@@ -45,6 +47,8 @@ public class GameManager : MonoBehaviour
     }
     IEnumerator CheckVelocity()
     {
+        Debug.Log("뭐가 문제?");
+
         do
         {
             velocity = 0;
@@ -53,9 +57,11 @@ public class GameManager : MonoBehaviour
                 Rigidbody ballrig = ball.GetComponent<Rigidbody>();
                 velocity += ballrig.velocity.magnitude;
             }
-          //  Debug.Log("velocity" + velocity);
+            Debug.Log("velocity" + velocity);
             yield return new WaitForSeconds(0.5f);
         } while (velocity > 0);
+        Debug.Log("총이 문제");
+
         playerBall.SetActive(true);
         ResetPosition();
         ScreenTouchManager.isTouch = false;
@@ -136,8 +142,8 @@ public class GameManager : MonoBehaviour
         cue.GetComponent<Rigidbody>().velocity = Vector3.zero;
         cue.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
         //큐 위치 초기화
-        cue.transform.localPosition = new Vector3(0, 0, -12);//cuePos;
-        cue.transform.rotation = Quaternion.identity;
+        cue.transform.localPosition = cuePos;//new Vector3(0, 0, -12);//cuePos;
+        cue.transform.localRotation = Quaternion.Euler(0, -90, 0);// Quaternion.identity;
         cue.SetActive(true);
     }
     private void OnCollisionEnter(Collision collision)
@@ -147,11 +153,10 @@ public class GameManager : MonoBehaviour
         if (collision.gameObject.tag == "ball")
         {
             collision.gameObject.SetActive(false);
-
+            Debug.Log("공 빠지다..");
             //playerBall.transform.position = new Vector3(0, -24, 0);
             playerBall.transform.rotation = Quaternion.identity;
             playerBall.GetComponent<Transform>().localPosition = new Vector3(-15, -4, -4);//resetPos.GetComponent<Transform>().position;
-
         }
         else
             CheckScore(collision.gameObject);
