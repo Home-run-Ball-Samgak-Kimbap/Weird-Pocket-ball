@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028326, g: 0.22571333, b: 0.30692202, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -531,7 +531,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &35720620
 RectTransform:
   m_ObjectHideFlags: 0
@@ -582,6 +582,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   modeSelectionUI: {fileID: 35720619}
   gameplayUI: {fileID: 1371932955}
+  SoundManager: {fileID: 0}
+  GameSetButton: {fileID: 0}
 --- !u!1 &44572955
 GameObject:
   m_ObjectHideFlags: 0
@@ -8598,6 +8600,7 @@ MonoBehaviour:
   objectE: {fileID: 1842670570}
   objectF: {fileID: 1474424359}
   myButton: {fileID: 739222031}
+  BottomMenuController: {fileID: 0}
   a: 0
   b: 1
   c: 1
@@ -10669,6 +10672,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   modeSelectionUI: {fileID: 1624962316}
   gameplayUI: {fileID: 1371932955}
+  SoundManager: {fileID: 0}
+  GameSetButton: {fileID: 0}
 --- !u!114 &1282841433
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12556,6 +12561,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   modeSelectionUI: {fileID: 1168858084}
   gameplayUI: {fileID: 1371932955}
+  SoundManager: {fileID: 0}
+  GameSetButton: {fileID: 0}
 --- !u!222 &1624962320
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -19535,7 +19542,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2091205076
 RectTransform:
   m_ObjectHideFlags: 0

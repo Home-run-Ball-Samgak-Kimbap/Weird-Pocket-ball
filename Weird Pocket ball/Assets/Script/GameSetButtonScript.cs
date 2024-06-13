@@ -12,7 +12,7 @@ public class GameSetButtonScript : MonoBehaviour
 
     public Button myButton;
 
-    public BottomMenuController BottomMenuController;
+    public ModeSelectController modeSelectController; // ModeSelectController 인스턴스 참조
 
     public int a = 1; // 예시 값, 실제 값은 필요에 따라 설정
     public int b = 1;
@@ -36,13 +36,15 @@ public class GameSetButtonScript : MonoBehaviour
     public void OnButtonClick()
     {
         Debug.Log("다음 버튼 눌림");
-        BottomMenuController.NextButton();
-        if (a == 1){
+        modeSelectController.NextButton(); // ModeSelectController 인스턴스의 NextButton 호출
+        if (a == 1)
+        {
             objectA.SetActive(true);
             objectB.SetActive(true);
             objectC.SetActive(true);
         }
-        if (b == 1){
+        if (b == 1)
+        {
             objectD.SetActive(true);
             objectE.SetActive(true);
             objectF.SetActive(true);
@@ -54,3 +56,4 @@ public class GameSetButtonScript : MonoBehaviour
         myButton.gameObject.SetActive(true);
     }
 }
+
