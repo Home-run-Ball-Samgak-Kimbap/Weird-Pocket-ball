@@ -5,11 +5,11 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
 using UnityEngine.UI;
+using UnityEditor;
 
 public class GameManager : MonoBehaviour
 {
-    public bool isStop = false;
-    [SerializeField] private bool turn;
+    public static bool turn;
     [SerializeField] private int player1Count = 0;
     [SerializeField] private int player2Count = 0;
 
@@ -18,15 +18,14 @@ public class GameManager : MonoBehaviour
     public GameObject playerBall;
     public GameObject balckBall;
     public GameObject resultUI;
-
-    public bool player1Move = false;
-    public bool player2Move = false;
-    public bool boolMove;
+    public GameObject gameSet;
 
     public TextMeshProUGUI result;
+    public TextMeshProUGUI turnUI;
 
     public int countchecker = 3;
     float velocity;
+    Vector3 resetPos = new Vector3(0, -24f, 0);
 
 
 
@@ -36,6 +35,7 @@ public class GameManager : MonoBehaviour
         player2Count = 0;
         turn = true;
     }
+    
 
     public void BallMovementStatus()
     {
@@ -56,15 +56,23 @@ public class GameManager : MonoBehaviour
           //  Debug.Log("velocity" + velocity);
             yield return new WaitForSeconds(0.5f);
         } while (velocity > 0);
+        playerBall.SetActive(true);
         ResetPosition();
         ScreenTouchManager.isTouch = false;
+
+        if (turn)
+            turnUI.text = "Player 1";
+        else
+            turnUI.text = "Player 2";
         StopCoroutine(CheckVelocity());
     }
     public void CheckScore(GameObject ball)
     {
         ball.SetActive(false);
+
         if (ball.name == "BlackBall")
         {
+            ChangeTurn();
             if (turn) //player1턴
             {
                 if (player1Count == countchecker)
@@ -91,6 +99,7 @@ public class GameManager : MonoBehaviour
                     result.text = "Player1\n승리";
                 }
             }
+            EditorApplication.isPaused = false;
             resultUI.SetActive(true);
         }
         else
@@ -99,7 +108,7 @@ public class GameManager : MonoBehaviour
             {//player1의 turn에서 player1공이 아닌 공을 넣으면
                 if (ball.tag != "Player1")
                 {
-                    turn = false;
+                    ChangeTurn();
                     player2Count++;
                 }
                 else
@@ -109,7 +118,7 @@ public class GameManager : MonoBehaviour
             {
                 if (ball.tag != "Player2")
                 {
-                    turn = true;
+                    ChangeTurn();
                     player1Count++;
                 }
                 else
@@ -136,18 +145,28 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("공굴러가유");
         collision.gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
-        if (collision.gameObject.tag == "Ball")
+        if (collision.gameObject.tag == "ball")
         {
-            turn = !turn;
-            playerBall.transform.position = new Vector3(0, -24, 0);
+            collision.gameObject.SetActive(false);
+
+            //playerBall.transform.position = new Vector3(0, -24, 0);
+            playerBall.transform.rotation = Quaternion.identity;
+            playerBall.GetComponent<Transform>().position = resetPos;
+
         }
         else
             CheckScore(collision.gameObject);
     }
     public void GameEnd()
     {
+        EditorApplication.isPaused = true;
+        gameSet.SetActive(false);
         resultUI.SetActive(false);
 
+    }
+    void ChangeTurn()
+    {
+        turn = !turn;
     }
 }
     

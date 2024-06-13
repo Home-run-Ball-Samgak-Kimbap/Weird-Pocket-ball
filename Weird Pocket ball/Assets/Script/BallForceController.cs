@@ -35,11 +35,11 @@ public class BallForceController : MonoBehaviour, IEndDragHandler
         Debug.Log("isTouch"+ScreenTouchManager.isTouch);
         if (ScreenTouchManager.isTouch)
         {
-            Debug.Log("°¼¿ô");
             float force = forceSlider.value * 50;
             cueRb.AddForce(touchManager.rayPos * force, ForceMode.Impulse);
             ball.GetComponent<LineRenderer>().enabled = false;
             ScreenTouchManager.isTouch = false;
+            GameManager.turn = !GameManager.turn;
         }
         forceSlider.value = 0;
 
