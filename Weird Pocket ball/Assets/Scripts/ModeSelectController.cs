@@ -10,6 +10,8 @@ public class ModeSelectController : MonoBehaviour
     public GameObject tableModeSubmenu;
     public GameObject cueModeSubmenu;
     public GameObject gameplayUI;
+    public GameObject BackGround;
+    public GameObject gameSet;
 
     private string selectedBallMode;
     private string selectedTableMode;
@@ -17,6 +19,8 @@ public class ModeSelectController : MonoBehaviour
 
     void Start()
     {
+        GameSet();
+        /*
         // 초기 UI 상태 설정
         mainMenu.SetActive(true);
         modeSelectButtons.SetActive(false);
@@ -24,6 +28,19 @@ public class ModeSelectController : MonoBehaviour
         tableModeSubmenu.SetActive(false);
         cueModeSubmenu.SetActive(false);
         gameplayUI.SetActive(false);
+        BackGround.SetActive(true);
+        */
+    }
+    public void GameSet()
+    {
+
+        mainMenu.SetActive(true);
+        modeSelectButtons.SetActive(false);
+        ballModeSubmenu.SetActive(false);
+        tableModeSubmenu.SetActive(false);
+        cueModeSubmenu.SetActive(false);
+        gameplayUI.SetActive(false);
+        BackGround.SetActive(true);
     }
 
     public void OnStartButtonClicked()
@@ -89,8 +106,12 @@ public class ModeSelectController : MonoBehaviour
             !string.IsNullOrEmpty(selectedCueMode))
         {
             // 모든 모드가 선택되었으면 게임 플레이 UI로 전환
+            BackGround.SetActive(false);
             modeSelectButtons.SetActive(false);
             gameplayUI.SetActive(true);
+            selectedBallMode = null;
+            selectedTableMode = null;
+            selectedCueMode = null;
             Debug.Log("All modes selected. Starting game...");
         }
     }
