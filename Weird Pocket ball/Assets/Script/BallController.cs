@@ -18,7 +18,7 @@ public class BallController : MonoBehaviour
 
     void Update()
     {
-        Debug.Log("isStop : " + isStop);
+     //   Debug.Log("isStop : " + isStop);
         
         // Debug.Log(rb.velocity.magnitude);
         
