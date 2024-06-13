@@ -19,14 +19,14 @@ public class GameManager : MonoBehaviour
     public GameObject balckBall;
     public GameObject resultUI;
     public GameObject gameSet;
+    public GameObject resetPos;
+
 
     public TextMeshProUGUI result;
     public TextMeshProUGUI turnUI;
 
     public int countchecker = 3;
     float velocity;
-    Vector3 resetPos = new Vector3(0, -24f, 0);
-
 
 
     private void Start()
@@ -99,7 +99,6 @@ public class GameManager : MonoBehaviour
                     result.text = "Player1\n½Â¸®";
                 }
             }
-            EditorApplication.isPaused = false;
             resultUI.SetActive(true);
         }
         else
@@ -151,7 +150,7 @@ public class GameManager : MonoBehaviour
 
             //playerBall.transform.position = new Vector3(0, -24, 0);
             playerBall.transform.rotation = Quaternion.identity;
-            playerBall.GetComponent<Transform>().position = resetPos;
+            playerBall.GetComponent<Transform>().localPosition = new Vector3(-15, -4, -4);//resetPos.GetComponent<Transform>().position;
 
         }
         else
@@ -159,7 +158,6 @@ public class GameManager : MonoBehaviour
     }
     public void GameEnd()
     {
-        EditorApplication.isPaused = true;
         gameSet.SetActive(false);
         resultUI.SetActive(false);
 
