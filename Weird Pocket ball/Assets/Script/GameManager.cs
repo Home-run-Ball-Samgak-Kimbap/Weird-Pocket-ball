@@ -7,6 +7,7 @@ using UnityEngine.UIElements;
 using UnityEngine.UI;
 using UnityEditor;
 using UnityEngine.SceneManagement;
+using UnityEngine.Rendering;
 
 public class GameManager : MonoBehaviour
 {
@@ -15,12 +16,16 @@ public class GameManager : MonoBehaviour
     [SerializeField] private int player2Count = 0;
 
     public GameObject[] Balls;
+    public GameObject[] table;
     public GameObject cue;
     public GameObject playerBall;
     public GameObject balckBall;
     public GameObject resultUI;
     public GameObject gameSet;
     public GameObject resetPos;
+
+    public Material fireMat;
+    public Material iceMat;
 
     public Vector3 cuePos;
 
@@ -31,12 +36,41 @@ public class GameManager : MonoBehaviour
     public int countchecker = 3;
     public float velocity;
 
+    string ballValue;
+    string tableValue;
+    string cueValue;
+    GameObject thisTable;
 
     private void Start()
     {
         player1Count = 0;
         player2Count = 0;
         turn = true;
+        ballValue = PlayerPrefs.GetString("BallValue");
+        tableValue = PlayerPrefs.GetString("TableValue");
+        cueValue = PlayerPrefs.GetString("CueBalue");
+        if (tableValue == "Triangle")
+        {
+
+        }
+        else if (tableValue == "Star")
+        {
+
+        }
+        else
+            thisTable = table[0];
+
+        if (ballValue == "FireBall")
+        {
+            thisTable.GetComponent<MeshRenderer>().material = fireMat;
+        }
+        else if(ballValue == "IceBall")
+        {
+            thisTable.GetComponent<MeshRenderer>().material = iceMat;
+
+        }
+
+        
     }
 
 
