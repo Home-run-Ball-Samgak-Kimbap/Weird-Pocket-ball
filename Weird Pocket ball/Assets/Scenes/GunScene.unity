@@ -541,7 +541,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2596564267205948368}
+      - m_Target: {fileID: 8388138846674031622}
         m_TargetAssemblyTypeName: Gun, Assembly-CSharp
         m_MethodName: Shoot
         m_Mode: 1
@@ -1973,7 +1973,6 @@ Transform:
   m_Children:
   - {fileID: 1954639279433363112}
   - {fileID: 8388138846674031621}
-  - {fileID: 4262331519514065875}
   m_Father: {fileID: 8229225283858230919}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2381873437885557353
@@ -2081,23 +2080,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 147384207087214575}
   m_CullTransparentMesh: 1
---- !u!114 &2596564267205948368
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4157167415148694745}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 796f285591e9cec4f8ad64782a0d1b5e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 8885762221669295362, guid: 566043ce1ed1cb145ad8f15eb866db76, type: 3}
-  firePoint: {fileID: 0}
-  bulletSpeed: 100
-  ball: {fileID: 2968765096668788639}
-  gameManager: {fileID: 4329525161613659219}
 --- !u!1 &2654428741317202108
 GameObject:
   m_ObjectHideFlags: 0
@@ -2774,23 +2756,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!1 &4157167415148694745
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4262331519514065875}
-  - component: {fileID: 2596564267205948368}
-  m_Layer: 7
-  m_Name: Gun
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
 --- !u!4 &4171332442926411493
 Transform:
   m_ObjectHideFlags: 0
@@ -2806,21 +2771,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 8229225283858230919}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4262331519514065875
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4157167415148694745}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0.7000216, z: -0, w: 0.71412164}
-  m_LocalPosition: {x: 0.05, y: -2.63, z: -7.3}
-  m_LocalScale: {x: 0.88531876, y: 0.8853186, z: 0.88531876}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 2257014964241298025}
-  m_LocalEulerAnglesHint: {x: 0, y: -88.857, z: 0}
 --- !u!114 &4329525161613659219
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3478,7 +3428,7 @@ MonoBehaviour:
   touchManager: {fileID: 7543816940877096152}
   forceSlider: {fileID: 3405916818379279745}
   ball: {fileID: 2968765096668788639}
-  cue: {fileID: 4157167415148694745}
+  cue: {fileID: 0}
 --- !u!114 &8060159142681824937
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3549,10 +3499,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 8885762221669295362, guid: 566043ce1ed1cb145ad8f15eb866db76, type: 3}
-  firePoint: {fileID: 8388138846674031621}
+  shootingPointStart: {fileID: 4767956890322239572}
+  shootingPointEnd: {fileID: 3605948966396449586}
   bulletSpeed: 100
-  ball: {fileID: 2968765096668788639}
-  gameManager: {fileID: 4329525161613659219}
+  fireRate: 0.1
 --- !u!222 &8409176271707570746
 CanvasRenderer:
   m_ObjectHideFlags: 0

@@ -45,5 +45,6 @@ public class Gun : MonoBehaviour
 
         // 일정 시간 후 총알을 파괴 (옵션)
         // Destroy(bullet, 2.0f);  // 2초 후 총알 파괴
+        this.gameObject.SetActive(false);
     }
 }
