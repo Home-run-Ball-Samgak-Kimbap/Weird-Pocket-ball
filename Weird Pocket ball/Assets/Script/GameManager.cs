@@ -26,6 +26,10 @@ public class GameManager : MonoBehaviour
 
     public Material fireMat;
     public Material iceMat;
+    public PhysicMaterial physicIceMat;
+    public Transform ballPos;
+    public Transform PlayerPos;
+    public GameObject ballSet;
 
     public Vector3 cuePos;
 
@@ -51,23 +55,42 @@ public class GameManager : MonoBehaviour
         cueValue = PlayerPrefs.GetString("CueBalue");
         if (tableValue == "Triangle")
         {
-
+            thisTable = table[1];
+            table[1].SetActive(true);
+            table[0].SetActive(false);
+            
         }
         else if (tableValue == "Star")
         {
-
+            thisTable = table[2];
+            table[2].SetActive(true);
+            table[0].SetActive(false);
+            
         }
         else
+        {
             thisTable = table[0];
+            playerBall.GetComponent<Transform>().position = PlayerPos.transform.position;
+            ballSet.GetComponent<Transform>().position = ballPos.transform.position;
+
+        }
 
         if (ballValue == "FireBall")
         {
             thisTable.GetComponent<MeshRenderer>().material = fireMat;
+            foreach (GameObject ball in Balls)
+            {
+                ball.GetComponent<ScaleParticleAtPosition>().enabled = true;
+            }
         }
         else if(ballValue == "IceBall")
         {
             thisTable.GetComponent<MeshRenderer>().material = iceMat;
-
+            foreach (GameObject ball in Balls)
+            {
+                ball.GetComponent<SphereCollider>().material = physicIceMat;
+                thisTable.GetComponent<MeshCollider>().material = physicIceMat;
+            }
         }
 
         

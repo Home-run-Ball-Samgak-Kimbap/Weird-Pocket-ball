@@ -15,7 +15,7 @@ public class TableSelectSystemScript : MonoBehaviour
 
     void Start()
     {
-        objectAA.SetActive(false);
+     //   objectAA.SetActive(false);
         objectAB.SetActive(false);
         objectAC.SetActive(false);
 

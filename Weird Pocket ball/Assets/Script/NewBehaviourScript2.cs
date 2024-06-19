@@ -5,11 +5,11 @@ using UnityEngine;
 public class ScaleParticleAtPosition : MonoBehaviour
 {
     public ParticleSystem particlePrefab; // 파티클 프리팹
-    public Transform targetObject; // 파티클을 재생할 대상 오브젝트
+     Transform targetObject; // 파티클을 재생할 대상 오브젝트
     public float scaleFactor = 2f; // 크기를 키울 비율
     public float duration = 10f; // 키우는 시간
     public float shrinkRate = 0.1f; // 크기를 줄이는 비율
-    public Color darkenColor = Color.black; // 어둡게 만들 색상
+    Color darkenColor = Color.black; // 어둡게 만들 색상
     public float darkenSpeed = 0.1f; // 어두워지는 속도
 
     private Material material; // 머티리얼
@@ -26,6 +26,7 @@ public class ScaleParticleAtPosition : MonoBehaviour
 
     void Start()
     {
+        targetObject = this.transform;
         // 시작 시간 기록
         startTime = Time.time;
 
@@ -57,7 +58,7 @@ public class ScaleParticleAtPosition : MonoBehaviour
         // 물체를 점점 작게 하는 함수 호출
         ShrinkOverTime();
         // 물체를 점점 어둡게 하는 함수 호출
-        DarkenOverTime();
+        //DarkenOverTime();
 
         // 만약 지정된 시간이 지나면 파티클 시스템 중지
         if (elapsedTime >= duration)
