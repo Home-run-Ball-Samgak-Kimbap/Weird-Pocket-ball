@@ -28,7 +28,7 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI turnUI;
 
     public int countchecker = 3;
-    float velocity;
+    public float velocity;
 
 
     private void Start()
@@ -42,13 +42,14 @@ public class GameManager : MonoBehaviour
     public void BallMovementStatus()
     {
         cue.SetActive(false);
-        Debug.Log("velocity" + velocity);
+       // Debug.Log("velocity" + velocity);
         StartCoroutine("CheckVelocity");
     }
     IEnumerator CheckVelocity()
     {
-        Debug.Log("ππ∞° πÆ¡¶?");
+        yield return new WaitForSeconds(0.5f);
 
+        //∏ÿ√ﬂ±‚∏¶ ±‚¥Ÿ∏≤
         do
         {
             velocity = 0;
@@ -56,12 +57,14 @@ public class GameManager : MonoBehaviour
             {
                 Rigidbody ballrig = ball.GetComponent<Rigidbody>();
                 velocity += ballrig.velocity.magnitude;
+                Debug.Log("name : "+ball.name+"velocity : " + velocity);
+
             }
-            Debug.Log("velocity" + velocity);
+            Debug.Log("!velocity : " + velocity);
+
             yield return new WaitForSeconds(0.5f);
         } while (velocity > 0);
-        Debug.Log("√—¿Ã πÆ¡¶");
-
+        Debug.Log("∏ÿ√Ë≥™ø‰?");
         playerBall.SetActive(true);
         ResetPosition();
         ScreenTouchManager.isTouch = false;

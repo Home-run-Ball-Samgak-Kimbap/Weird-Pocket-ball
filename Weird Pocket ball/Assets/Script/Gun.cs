@@ -1,8 +1,13 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class Gun : MonoBehaviour
 {
+    public GameObject ball;
+    public GameManager gameManager;
+
+
     public GameObject bulletPrefab;     // 총알 프리팹
     public Transform shootingPointStart;  // 총알이 발사될 시작 지점
     public Transform shootingPointEnd;    // 총알이 발사될 끝 지점 (발사 방향 계산용)
@@ -39,12 +44,20 @@ public class Gun : MonoBehaviour
 
         // 발사 방향 계산: shootingPointStart에서 shootingPointEnd까지의 벡터의 반대 방향
         Vector3 direction = (shootingPointStart.position - shootingPointEnd.position).normalized;
+        this.gameObject.SetActive(false);
 
+        Debug.Log(this.gameObject);
+        ball.GetComponent<LineRenderer>().enabled = false;
+        this.gameObject.SetActive(false);
         // 총알에 힘을 가해 발사
         rb.velocity = direction * bulletSpeed;
 
         // 일정 시간 후 총알을 파괴 (옵션)
         // Destroy(bullet, 2.0f);  // 2초 후 총알 파괴
-        this.gameObject.SetActive(false);
+
+        //isStart = true;
+        
+        GameManager.turn = !GameManager.turn;
+        gameManager.BallMovementStatus();
     }
 }

@@ -17,7 +17,7 @@ public class CueController : MonoBehaviour
         if (collision.gameObject.tag == "ball")
         {
             Debug.Log("cue.transform.position : " + this.gameObject.transform.position);
-             ball.GetComponent<Rigidbody>().AddForce(ball.transform.position * forceSlider.value, ForceMode.Impulse);
+            ball.GetComponent<Rigidbody>().AddForce(ball.transform.position * forceSlider.value, ForceMode.Impulse);
             //isStart = true;
             this.gameObject.SetActive(false);
             gameManager.BallMovementStatus();
