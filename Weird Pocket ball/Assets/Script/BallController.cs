@@ -4,7 +4,7 @@ using UnityEngine;
 public class BallController : MonoBehaviour
 {
     public bool isStop = true;
-    public float stopThreshold = 1.5f;
+    private float stopThreshold = 0.1f;
     public AudioClip clip;
     public AudioSource audioSource;
     private Rigidbody rb;
@@ -37,7 +37,7 @@ public class BallController : MonoBehaviour
             {
                 rb.velocity = Vector3.zero;
                 rb.angularVelocity = Vector3.zero;
-                isStop = true; //¸ØÃã
+                isStop = true; //ï¿½ï¿½ï¿½ï¿½
             }
            // else if (rb.velocity == Vector3.zero)
              //   isStop = true;
