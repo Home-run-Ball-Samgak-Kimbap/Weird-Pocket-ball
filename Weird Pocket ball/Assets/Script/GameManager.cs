@@ -6,6 +6,7 @@ using UnityEngine;
 using UnityEngine.UIElements;
 using UnityEngine.UI;
 using UnityEditor;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -37,12 +38,12 @@ public class GameManager : MonoBehaviour
         player2Count = 0;
         turn = true;
     }
-    
+
 
     public void BallMovementStatus()
     {
         cue.SetActive(false);
-       // Debug.Log("velocity" + velocity);
+        // Debug.Log("velocity" + velocity);
         StartCoroutine("CheckVelocity");
     }
     IEnumerator CheckVelocity()
@@ -57,7 +58,7 @@ public class GameManager : MonoBehaviour
             {
                 Rigidbody ballrig = ball.GetComponent<Rigidbody>();
                 velocity += ballrig.velocity.magnitude;
-                Debug.Log("name : "+ball.name+"velocity : " + velocity);
+                Debug.Log("name : " + ball.name + "velocity : " + velocity);
 
             }
             Debug.Log("!velocity : " + velocity);
@@ -135,7 +136,7 @@ public class GameManager : MonoBehaviour
             //  ResetChildPosition();
         }
     }
-        
+
     void ResetPosition()
     {
         Debug.Log("ResetCuePosition");
@@ -145,8 +146,17 @@ public class GameManager : MonoBehaviour
         cue.GetComponent<Rigidbody>().velocity = Vector3.zero;
         cue.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
         //큐 위치 초기화
-        cue.transform.localPosition = cuePos;//new Vector3(0, 0, -12);//cuePos;
-        cue.transform.localRotation = Quaternion.Euler(0, -90, 0);// Quaternion.identity;
+
+        if (SceneManager.GetActiveScene().name == "CueScene")
+        {
+            cue.transform.localPosition = new Vector3(0, 0, -12);
+            cue.transform.localRotation = Quaternion.identity;
+        }
+        else if (SceneManager.GetActiveScene().name == "GunScene")
+        {
+            cue.transform.localPosition = cuePos;
+            cue.transform.localRotation = Quaternion.Euler(0, -90, 0);
+        }
         cue.SetActive(true);
     }
     private void OnCollisionEnter(Collision collision)
@@ -168,6 +178,7 @@ public class GameManager : MonoBehaviour
     {
         gameSet.SetActive(false);
         resultUI.SetActive(false);
+        SceneManager.LoadScene("NewTitle");
 
     }
     void ChangeTurn()
@@ -175,4 +186,3 @@ public class GameManager : MonoBehaviour
         turn = !turn;
     }
 }
-    
