@@ -2094,10 +2094,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 8885762221669295362, guid: 566043ce1ed1cb145ad8f15eb866db76, type: 3}
-  shootingPointStart: {fileID: 4767956890322239572}
-  shootingPointEnd: {fileID: 3605948966396449586}
+  firePoint: {fileID: 0}
   bulletSpeed: 100
-  fireRate: 0.1
   ball: {fileID: 2968765096668788639}
   gameManager: {fileID: 4329525161613659219}
 --- !u!1 &2654428741317202108
@@ -3551,10 +3549,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 8885762221669295362, guid: 566043ce1ed1cb145ad8f15eb866db76, type: 3}
-  shootingPointStart: {fileID: 4767956890322239572}
-  shootingPointEnd: {fileID: 3605948966396449586}
+  firePoint: {fileID: 8388138846674031621}
   bulletSpeed: 100
-  fireRate: 0.1
   ball: {fileID: 2968765096668788639}
   gameManager: {fileID: 4329525161613659219}
 --- !u!222 &8409176271707570746
