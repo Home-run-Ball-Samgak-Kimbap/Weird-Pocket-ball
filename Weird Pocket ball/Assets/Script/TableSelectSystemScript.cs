@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class TableSelectSystemScript : MonoBehaviour
 {
-    public GameObject object_FireTable;
-    public GameObject objectAB;
-    public GameObject objectAC;
+    public GameObject object_FireBall;
+    public GameObject object_8Ball;
+    public GameObject object_IceBall;
     public GameObject objectBA;
     public GameObject objectBB;
     public GameObject objectBC;
@@ -15,9 +15,9 @@ public class TableSelectSystemScript : MonoBehaviour
 
     void Start()
     {
-        objectAA.SetActive(false);
-        objectAB.SetActive(false);
-        objectAC.SetActive(false);
+        object_FireBall.SetActive(false);
+        object_8Ball.SetActive(false);
+        object_IceBall.SetActive(false);
 
         objectBA.SetActive(false);
         objectBB.SetActive(false);
