@@ -1420,6 +1420,64 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 750967598}
   m_CullTransparentMesh: 1
+--- !u!1 &774136451
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 774136452}
+  - component: {fileID: 774136453}
+  m_Layer: 5
+  m_Name: ModeSelectController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &774136452
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 774136451}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3536065854807856547}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &774136453
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 774136451}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2218073279a74b58b96a05b1056ca97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainMenu: {fileID: 4175255723499005926}
+  modeSelectButtons: {fileID: 5562318288730831723}
+  ballModeSubmenu: {fileID: 4207291621547878591}
+  tableModeSubmenu: {fileID: 603977531174130092}
+  cueModeSubmenu: {fileID: 161644427435786075}
+  gameplayUI: {fileID: 593715455831816725}
+  BackGround: {fileID: 7802108745959377802}
+  selectedBallMode: 
+  selectedTableMode: 
+  selectedCueMode: 
 --- !u!1 &791808793
 GameObject:
   m_ObjectHideFlags: 0
@@ -2390,7 +2448,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myButton: {fileID: 1559463483}
-  ModeSelectController: {fileID: 128953177711807599}
+  ModeSelectController: {fileID: 774136453}
 --- !u!1 &1580747530
 GameObject:
   m_ObjectHideFlags: 0
@@ -3291,28 +3349,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &128953177711807599
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5562318288730831723}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2218073279a74b58b96a05b1056ca97, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mainMenu: {fileID: 4175255723499005926}
-  modeSelectButtons: {fileID: 5562318288730831723}
-  ballModeSubmenu: {fileID: 4207291621547878591}
-  tableModeSubmenu: {fileID: 603977531174130092}
-  cueModeSubmenu: {fileID: 161644427435786075}
-  gameplayUI: {fileID: 593715455831816725}
-  BackGround: {fileID: 7802108745959377802}
-  selectedBallMode: 
-  selectedTableMode: 
-  selectedCueMode: 
 --- !u!223 &140862187057488474
 Canvas:
   m_ObjectHideFlags: 0
@@ -4214,18 +4250,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 128953177711807599}
-        m_TargetAssemblyTypeName: ModeSelectionController, Assembly-CSharp
-        m_MethodName: OnCueSubButtonClicked
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: "\uAE30\uBCF8\uD050\uB300"
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 6345493489283773867}
         m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
         m_MethodName: OnSfx
@@ -4236,6 +4260,18 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 774136453}
+        m_TargetAssemblyTypeName: ModeSelectController, Assembly-CSharp
+        m_MethodName: OnCueSubButtonClicked
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: BasicCue
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!222 &1052468795229496341
@@ -6154,18 +6190,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 128953177711807599}
-        m_TargetAssemblyTypeName: ModeSelectionController, Assembly-CSharp
-        m_MethodName: OnTableSubButtonClicked
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: "\uBCC4\uBAA8\uC591\uB2F9\uAD6C\uB300"
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 6345493489283773867}
         m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
         m_MethodName: OnSfx
@@ -6176,6 +6200,18 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 774136453}
+        m_TargetAssemblyTypeName: ModeSelectController, Assembly-CSharp
+        m_MethodName: OnTableSubButtonClicked
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Star
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!222 &2399675366067844228
@@ -7047,18 +7083,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 128953177711807599}
-        m_TargetAssemblyTypeName: ModeSelectionController, Assembly-CSharp
-        m_MethodName: OnTableSubButtonClicked
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: "\uAE30\uBCF8\uB2F9\uAD6C\uB300"
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 6345493489283773867}
         m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
         m_MethodName: OnSfx
@@ -7069,6 +7093,18 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 774136453}
+        m_TargetAssemblyTypeName: ModeSelectController, Assembly-CSharp
+        m_MethodName: OnTableSubButtonClicked
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Square
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &3345042698024470070
@@ -7145,18 +7181,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 128953177711807599}
-        m_TargetAssemblyTypeName: ModeSelectionController, Assembly-CSharp
-        m_MethodName: OnBallSubButtonClicked
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: "\uBD88\uD0C0\uB294 \uACF5"
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 6345493489283773867}
         m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
         m_MethodName: OnSfx
@@ -7167,6 +7191,18 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 774136453}
+        m_TargetAssemblyTypeName: ModeSelectController, Assembly-CSharp
+        m_MethodName: OnBallSubButtonClicked
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: FireBall
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!222 &3392068665966079775
@@ -7265,6 +7301,7 @@ RectTransform:
   - {fileID: 2065608190}
   - {fileID: 1559463482}
   - {fileID: 1497445673}
+  - {fileID: 774136452}
   m_Father: {fileID: 6593877847332959033}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -7437,18 +7474,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 128953177711807599}
-        m_TargetAssemblyTypeName: ModeSelectionController, Assembly-CSharp
-        m_MethodName: OnBallSubButtonClicked
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: "\uB2F9\uAD6C\uACF5"
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 6345493489283773867}
         m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
         m_MethodName: OnSfx
@@ -7459,6 +7484,18 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 774136453}
+        m_TargetAssemblyTypeName: ModeSelectController, Assembly-CSharp
+        m_MethodName: OnBallSubButtonClicked
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 8Ball
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!1 &3732161123451608822
@@ -8097,18 +8134,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 128953177711807599}
-        m_TargetAssemblyTypeName: ModeSelectionController, Assembly-CSharp
-        m_MethodName: OnCueSubButtonClicked
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: "\uBE44\uBE44\uD0C4"
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 6345493489283773867}
         m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
         m_MethodName: OnSfx
@@ -8119,6 +8144,18 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 774136453}
+        m_TargetAssemblyTypeName: ModeSelectController, Assembly-CSharp
+        m_MethodName: OnCueSubButtonClicked
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Gun
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &4157456544111596168
@@ -9406,7 +9443,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3536065854807856547}
-  - component: {fileID: 128953177711807599}
   m_Layer: 5
   m_Name: ModeSelect
   m_TagString: Untagged
@@ -10209,18 +10245,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 128953177711807599}
-        m_TargetAssemblyTypeName: ModeSelectionController, Assembly-CSharp
-        m_MethodName: OnBallSubButtonClicked
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: "\uC5BC\uC74C\uACF5"
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 6345493489283773867}
         m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
         m_MethodName: OnSfx
@@ -10231,6 +10255,18 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 774136453}
+        m_TargetAssemblyTypeName: ModeSelectController, Assembly-CSharp
+        m_MethodName: OnBallSubButtonClicked
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: IceBall
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!33 &6096631130323644523
@@ -11078,6 +11114,7 @@ MonoBehaviour:
   resultUI: {fileID: 3279225952087807649}
   gameSet: {fileID: 5622993048038723100}
   resetPos: {fileID: 0}
+  cuePos: {x: 0, y: 0, z: 0}
   result: {fileID: 6926690431263680759}
   turnUI: {fileID: 7969347008005376490}
   countchecker: 3
@@ -14144,18 +14181,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 128953177711807599}
-        m_TargetAssemblyTypeName: ModeSelectionController, Assembly-CSharp
-        m_MethodName: OnTableSubButtonClicked
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: "\uC0BC\uAC01\uD615\uB2F9\uAD6C\uB300"
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 6345493489283773867}
         m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
         m_MethodName: OnSfx
@@ -14166,6 +14191,18 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 774136453}
+        m_TargetAssemblyTypeName: ModeSelectController, Assembly-CSharp
+        m_MethodName: OnTableSubButtonClicked
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Triangle
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!1 &9029597578070889280
