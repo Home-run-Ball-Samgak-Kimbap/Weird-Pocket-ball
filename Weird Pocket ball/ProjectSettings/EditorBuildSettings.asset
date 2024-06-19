@@ -18,7 +18,7 @@ EditorBuildSettings:
     path: Assets/Scenes/ModeSetting3.unity
     guid: 82441fd38a5c14ac39567d37aac0f827
   - enabled: 1
-    path: Assets/Scenes/Hyeonjeong.unity
+    path: Assets/Scenes/GunScene.unity
     guid: 56036f8fb3c81434abef8cbe2600b43a
   - enabled: 1
     path: Assets/Scenes/test.unity

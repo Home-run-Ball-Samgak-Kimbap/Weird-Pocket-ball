@@ -8,10 +8,13 @@ public class MoveToPlayScene : MonoBehaviour {
     private string BallMode;
     private string TableMode;
     private string CueMode;
+    private bool isBallMode = false;
+    private bool isTableMode = false;
+    private bool isCueMode = false;
 
     void Start() {
         if (myButton == null || ModeSelectController == null) {
-            Debug.LogError("myButton 또는 modeSelectController가 설정되지 않았습니다.");
+            Debug.LogError("myButton 또는 modeSelectController가 설정되지 않았습니다." + myButton + ModeSelectController);
             return;
         }
         myButton.onClick.AddListener(OnButtonClick);
@@ -27,9 +30,22 @@ public class MoveToPlayScene : MonoBehaviour {
         }
     }
 
+    void Update(){
+        BallMode = ModeSelectController.selectedBallMode;
+        TableMode = ModeSelectController.selectedTableMode;
+        CueMode = ModeSelectController.selectedCueMode;
+        isBallMode = ModeSelectController.isSelectedBallMode;
+        isTableMode = ModeSelectController.isSelectedTableMode;
+        isCueMode = ModeSelectController.isSelectedCueMode;
+    }
+
     private void OnButtonClick() {
-        if (ModeSelectController.selectedBallMode != null && ModeSelectController.selectedTableMode != null && ModeSelectController.selectedCueMode != null) {
-            Debug.Log("Scene Change Button Clicked");
+        Debug.Log("Scene Change Button Clicked");
+        Debug.Log("Ball: " + BallMode);
+        Debug.Log("Table: " + TableMode);
+        Debug.Log("Cue: " + CueMode);
+        if (isBallMode && isTableMode && isCueMode){
+            Debug.Log(BallMode);
             ChangeScene();
         }
     }
@@ -41,6 +57,12 @@ public class MoveToPlayScene : MonoBehaviour {
         PlayerPrefs.SetString("CueBalue", CueMode);
 
         // 새로운 씬 로드
-        SceneManager.LoadScene("test");
+        if (CueMode == "BasicCue"){
+            SceneManager.LoadScene("CueScene");
+        }
+        if (CueMode == "Gun"){
+            SceneManager.LoadScene("GunScene");
+        }
+        
     }
 }
