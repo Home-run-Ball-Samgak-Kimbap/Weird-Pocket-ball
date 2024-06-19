@@ -21,14 +21,13 @@ public class GameManager : MonoBehaviour
     public GameObject playerBall;
     public GameObject balckBall;
     public GameObject resultUI;
-    public GameObject gameSet;
     public GameObject resetPos;
 
     public Material fireMat;
     public Material iceMat;
     public PhysicMaterial physicIceMat;
     public Transform ballPos;
-    public Transform PlayerPos;
+    public Transform playerPos;
     public GameObject ballSet;
 
     public Vector3 cuePos;
@@ -42,7 +41,6 @@ public class GameManager : MonoBehaviour
 
     string ballValue;
     string tableValue;
-    string cueValue;
     GameObject thisTable;
 
     private void Start()
@@ -52,7 +50,6 @@ public class GameManager : MonoBehaviour
         turn = true;
         ballValue = PlayerPrefs.GetString("BallValue");
         tableValue = PlayerPrefs.GetString("TableValue");
-        cueValue = PlayerPrefs.GetString("CueBalue");
         if (tableValue == "Triangle")
         {
             thisTable = table[1];
@@ -70,7 +67,7 @@ public class GameManager : MonoBehaviour
         else
         {
             thisTable = table[0];
-            playerBall.GetComponent<Transform>().position = PlayerPos.transform.position;
+            playerBall.GetComponent<Transform>().position = playerPos.transform.position;
             ballSet.GetComponent<Transform>().position = ballPos.transform.position;
 
         }
@@ -233,7 +230,6 @@ public class GameManager : MonoBehaviour
     }
     public void GameEnd()
     {
-        gameSet.SetActive(false);
         resultUI.SetActive(false);
         SceneManager.LoadScene("NewTitle");
 

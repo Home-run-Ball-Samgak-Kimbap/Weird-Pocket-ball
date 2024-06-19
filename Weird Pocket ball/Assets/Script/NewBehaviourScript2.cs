@@ -42,8 +42,8 @@ public class ScaleParticleAtPosition : MonoBehaviour
         material = GetComponent<Renderer>().material; // 오브젝트의 머티리얼 가져오기
         
         // 시작 시 공을 밀기 위한 함수
-        rb = GetComponent<Rigidbody>();
-        rb.AddForce(transform.forward * thrust, ForceMode.Force);
+       // rb = GetComponent<Rigidbody>();
+       // rb.AddForce(transform.forward * thrust, ForceMode.Force);
     }
 
     void Update()
