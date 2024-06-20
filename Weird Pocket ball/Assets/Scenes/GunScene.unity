@@ -4216,7 +4216,7 @@ MonoBehaviour:
   cuePos: {x: 0, y: -2.5, z: -7}
   result: {fileID: 94999488252767539}
   turnUI: {fileID: 1146662367703878702}
-  countchecker: 3
+  countchecker: 7
   velocity: 0
 --- !u!4 &4767956890322239572
 Transform:

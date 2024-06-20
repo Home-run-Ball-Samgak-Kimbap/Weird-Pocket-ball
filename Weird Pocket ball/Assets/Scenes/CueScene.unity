@@ -3549,7 +3549,7 @@ MonoBehaviour:
   cuePos: {x: 0, y: 0, z: 0}
   result: {fileID: 94999488252767539}
   turnUI: {fileID: 1146662367703878702}
-  countchecker: 3
+  countchecker: 7
   velocity: 0
 --- !u!64 &4793584514421753743
 MeshCollider:
