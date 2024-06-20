@@ -232,7 +232,13 @@ public class GameManager : MonoBehaviour
 
         }
         else if (collision.gameObject.tag == "Player1" || collision.gameObject.tag == "Player2")
+        {
             CheckScore(collision.gameObject);
+        }
+        else
+        {
+            Destroy(collision.gameObject);
+        }
     }
     public void GameEnd()
     {
