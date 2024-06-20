@@ -34,6 +34,16 @@ public class TabController : MonoBehaviour
         tabButton = _button;
         tabButton.Select();
     }
+    public void Quit() {
+        Application.Quit();/*
+        if (Application.platform == RuntimePlatform.Android)
+        {
+            if (Input.GetKey(KeyCode.Escape))
+            {
+                
+            }
+        }*/
+    }
 }
 
 
