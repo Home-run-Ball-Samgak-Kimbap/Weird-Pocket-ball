@@ -99,7 +99,6 @@ public class GameManager : MonoBehaviour
     public void BallMovementStatus()
     {
         cue.SetActive(false);
-        // Debug.Log("velocity" + velocity);
         StartCoroutine("CheckVelocity");
     }
     IEnumerator CheckVelocity()
@@ -114,14 +113,12 @@ public class GameManager : MonoBehaviour
             {
                 Rigidbody ballrig = ball.GetComponent<Rigidbody>();
                 velocity += ballrig.velocity.magnitude;
-                Debug.Log("name : " + ball.name + "velocity : " + velocity);
 
             }
-            Debug.Log("!velocity : " + velocity);
+            Debug.Log("velocity : " + velocity);
 
             yield return new WaitForSeconds(0.5f);
         } while (velocity > 0);
-        Debug.Log("¸ØÃè³ª¿ä?");
         playerBall.SetActive(true);
         ResetPosition();
         ScreenTouchManager.isTouch = false;
@@ -256,5 +253,6 @@ public class GameManager : MonoBehaviour
     public void Restart()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        ScreenTouchManager.isTouch = false;
     }
 }

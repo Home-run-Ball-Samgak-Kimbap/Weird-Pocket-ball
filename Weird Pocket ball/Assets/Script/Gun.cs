@@ -38,6 +38,7 @@ public class Gun : MonoBehaviour
     
     public void Shoot()
     {
+        Debug.Log("istouch : " + ScreenTouchManager.isTouch);
         if (ScreenTouchManager.isTouch)
         {
             // 총알 생성
