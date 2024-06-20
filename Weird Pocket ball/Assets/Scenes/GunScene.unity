@@ -388,7 +388,7 @@ RectTransform:
   m_GameObject: {fileID: 445786766}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 3.7781641, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 803961139}
@@ -418,7 +418,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uBC1C\uC0AC"
+  m_text: "\uD0D5!"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7d9270d2bc07a9545a5ddc1c42d5e3e2, type: 2}
   m_sharedMaterial: {fileID: 1567778951150425530, guid: 7d9270d2bc07a9545a5ddc1c42d5e3e2, type: 2}
@@ -445,8 +445,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 15
+  m_fontSizeBase: 15
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -999,6 +999,18 @@ PrefabInstance:
       value: -496
       objectReference: {fileID: 0}
     - target: {fileID: 3221702768381822659, guid: 85343afbc0446e14bb211a6ca1557d9e, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3221702768381822659, guid: 85343afbc0446e14bb211a6ca1557d9e, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3221702768381822659, guid: 85343afbc0446e14bb211a6ca1557d9e, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3221702768381822659, guid: 85343afbc0446e14bb211a6ca1557d9e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -1140,14 +1152,14 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 803961138}
-  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
+  m_LocalScale: {x: 0.51130205, y: 2.5415113, z: 0.9675872}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 445786767}
   m_Father: {fileID: 1323941199669107719}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 573, y: -4}
@@ -1229,8 +1241,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 62d68778e073e18459ed2a2ed2ba5103, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4

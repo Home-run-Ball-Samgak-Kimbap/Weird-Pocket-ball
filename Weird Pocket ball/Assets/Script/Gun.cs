@@ -22,50 +22,39 @@ public class Gun : MonoBehaviour
             StartCoroutine(ShootThreeTimes());
         }
     }*/
-    public void ShootBullet()
-    {
-        StartCoroutine(ShootThreeTimes());
-    }
 
-    IEnumerator ShootThreeTimes()
-    {
-        for (int i = 0; i < 3; i++)
-        {
-            Shoot();
-            Debug.Log("ekdrms");
-            yield return new WaitForSeconds(fireRate);
-        }
-        StopCoroutine(ShootThreeTimes());
-
-
-        Debug.Log(this.gameObject);
-        ball.GetComponent<LineRenderer>().enabled = false;
-        this.gameObject.SetActive(false);
-
-        ScreenTouchManager.isTouch = false;
-        GameManager.turn = !GameManager.turn;
-        gameManager.BallMovementStatus();
-    }
+   
 
     public void Shoot()
     {
         Debug.Log("istouch : " + ScreenTouchManager.isTouch);
         if (ScreenTouchManager.isTouch)
         {
-            // 총알 생성
-            GameObject bullet = Instantiate(bulletPrefab, shootingPointStart.position, shootingPointStart.rotation);
-            Rigidbody rb = bullet.GetComponent<Rigidbody>();
+            for(int count = 0; count < 3; count++)
+            {
+                // 총알 생성
+                GameObject bullet = Instantiate(bulletPrefab, shootingPointStart.position, shootingPointStart.rotation);
+                Rigidbody rb = bullet.GetComponent<Rigidbody>();
 
-            // 발사 방향 계산: shootingPointStart에서 shootingPointEnd까지의 벡터의 반대 방향
-            Vector3 direction = (shootingPointStart.position - shootingPointEnd.position).normalized;
+                // 발사 방향 계산: shootingPointStart에서 shootingPointEnd까지의 벡터의 반대 방향
+                Vector3 direction = (shootingPointStart.position - shootingPointEnd.position).normalized;
+                this.gameObject.SetActive(false);
+                // 총알에 힘을 가해 발사
+
+                rb.velocity = direction * bulletSpeed;
+            }
+            
+
+            ball.GetComponent<LineRenderer>().enabled = false;
             this.gameObject.SetActive(false);
-            // 총알에 힘을 가해 발사
-            rb.velocity = direction * bulletSpeed;
 
             // 일정 시간 후 총알을 파괴 (옵션)
             // Destroy(bullet, 2.0f);  // 2초 후 총알 파괴
 
             //isStart = true;
+            ScreenTouchManager.isTouch = false;
+            GameManager.turn = !GameManager.turn;
+            gameManager.BallMovementStatus();
         }
         
     }
