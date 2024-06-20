@@ -231,7 +231,7 @@ public class GameManager : MonoBehaviour
             ResetPosition();
 
         }
-        else if (collision.gameObject.tag == "Player1" || collision.gameObject.tag == "Player2")
+        else if (collision.gameObject.tag == "Player1" || collision.gameObject.tag == "Player2" || collision.gameObject.tag == "BlackBall")
         {
             CheckScore(collision.gameObject);
         }
