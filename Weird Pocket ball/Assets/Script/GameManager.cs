@@ -234,7 +234,7 @@ public class GameManager : MonoBehaviour
             ResetPosition();
 
         }
-        else
+        else if (collision.gameObject.tag == "Player1" || collision.gameObject.tag == "Player2")
             CheckScore(collision.gameObject);
     }
     public void GameEnd()
