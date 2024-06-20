@@ -2,33 +2,15 @@ using UnityEngine;
 
 public class OrientationController : MonoBehaviour
 {
-    public enum Orientation
-    {
-        LandscapeLeft,
-        LandscapeRight,
-        Portrait
-    }
-
-    public Orientation sceneOrientation;
-
     void Start()
     {
-        SetOrientation();
-    }
+        // 가로모드로 고정
+        Screen.orientation = ScreenOrientation.LandscapeLeft;
 
-    void SetOrientation()
-    {
-        switch (sceneOrientation)
-        {
-            case Orientation.LandscapeLeft:
-                Screen.orientation = ScreenOrientation.LandscapeLeft;
-                break;
-            case Orientation.LandscapeRight:
-                Screen.orientation = ScreenOrientation.LandscapeRight;
-                break;
-            case Orientation.Portrait:
-                Screen.orientation = ScreenOrientation.Portrait;
-                break;
-        }
+        // 자동 회전 비활성화
+        Screen.autorotateToPortrait = false;
+        Screen.autorotateToPortraitUpsideDown = false;
+        Screen.autorotateToLandscapeLeft = false;
+        Screen.autorotateToLandscapeRight = false;
     }
 }
