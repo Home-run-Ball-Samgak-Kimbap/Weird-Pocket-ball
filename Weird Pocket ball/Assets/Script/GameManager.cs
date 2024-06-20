@@ -239,12 +239,22 @@ public class GameManager : MonoBehaviour
     }
     public void GameEnd()
     {
-        resultUI.SetActive(false);
         SceneManager.LoadScene("NewTitle");
-
     }
     void ChangeTurn()
     {
         turn = !turn;
+    }
+    public void Pause()
+    {
+        Time.timeScale = 0f;
+    }
+    public void Resume()
+    {
+        Time.timeScale = 1f;
+    }
+    public void Restart()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
