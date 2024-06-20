@@ -18,14 +18,14 @@ EditorBuildSettings:
     path: Assets/Scenes/ModeSetting3.unity
     guid: 82441fd38a5c14ac39567d37aac0f827
   - enabled: 1
-    path: Assets/Scenes/GunScene.unity
-    guid: 56036f8fb3c81434abef8cbe2600b43a
-  - enabled: 1
+    path: Assets/Scenes/NewTitle.unity
+    guid: 51418ff7869855046adc52d269719851
+  - enabled: 0
     path: Assets/Scenes/test.unity
     guid: bcffd81879d89aa40a59afe1ac35173e
   - enabled: 1
-    path: Assets/Scenes/NewTitle.unity
-    guid: 51418ff7869855046adc52d269719851
+    path: Assets/Scenes/GunScene.unity
+    guid: 56036f8fb3c81434abef8cbe2600b43a
   - enabled: 1
     path: Assets/Scenes/CueScene.unity
     guid: e89417abe2558764eaba4bb88f38a8b7
