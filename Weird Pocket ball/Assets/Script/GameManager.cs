@@ -29,6 +29,8 @@ public class GameManager : MonoBehaviour
     public Transform ballPos;
     public Transform playerPos;
     public GameObject ballSet;
+    public TextMeshProUGUI P1;
+    public TextMeshProUGUI P2;
 
     public Vector3 cuePos;
 
@@ -125,9 +127,9 @@ public class GameManager : MonoBehaviour
         ScreenTouchManager.isTouch = false;
 
         if (turn)
-            turnUI.text = "Player 1";
+            turnUI.text = "P1";
         else
-            turnUI.text = "Player 2";
+            turnUI.text = "P2";
         StopCoroutine(CheckVelocity());
     }
     public void CheckScore(GameObject ball)
@@ -188,6 +190,8 @@ public class GameManager : MonoBehaviour
                     player2Count++;
             }
             //  ResetChildPosition();
+            P1.text = player1Count.ToString() + "점";
+            P2.text = player2Count.ToString() + "점";
         }
     }
 
@@ -223,7 +227,12 @@ public class GameManager : MonoBehaviour
             Debug.Log("공 빠지다..");
             //playerBall.transform.position = new Vector3(0, -24, 0);
             playerBall.transform.rotation = Quaternion.identity;
-            playerBall.GetComponent<Transform>().localPosition = new Vector3(-15, -4, -4);//resetPos.GetComponent<Transform>().position;
+            playerBall.GetComponent<Rigidbody>().velocity = Vector3.zero;
+            playerBall.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
+            playerBall.GetComponent<Transform>().position = new Vector3(0, -24.6f, -6.29f);
+            playerBall.transform.rotation = Quaternion.identity;
+            ResetPosition();
+
         }
         else
             CheckScore(collision.gameObject);
